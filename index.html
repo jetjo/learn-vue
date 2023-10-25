@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vite App</title>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <!-- 组件/src/components/12-组件基础/DOM模版注意事项/template-from-dom.js的模版 -->
+    <!-- NOTE: 这里template标签不能使用div代替,否则模版可见 -->
+    <template id="template-from-dom">
+      <div>
+        <!-- HTML 中应该使用 kebab-case -->
+        <!-- <blog-post post-title="hello!" @update-post="onUpdatePost"></blog-post> -->
+        <BlogPost postTitle="hello!" @updatePost="onUpdatePost">
+          {{ this.blog }}
+        </BlogPost>
+        <BlogPOST postTITLE="hello!" @updatePOST="onUpdatePost">
+          {{ this.blog }}
+        </BlogPOST>
+        <!-- NOTE: 由于在DOM中不应隐式闭合自定义组件标签,导致内容‘blog 3 default content!’
+        渲染进了自定义标签的slot内 -->
+        <div><blog-post-3 />blog 3 default content!</div>
+        <ul>
+          <!-- NOTE:  DOM内的模版,ul这类的标签按规范只能是li标签做子标签
+          所以,应该这样: -->
+          <li is="vue:blog-post-4"></li>
+          <!-- NOTE: is属性值以vue:开头以避免和原生自定义标签混淆 -->
+          <!-- <blog-post-4> </blog-post-4> -->
+        </ul>
+      </div>
+    </template>
+    <!-- <div id="app2"></div> -->
+    <script type="module" src="/src/main.js"></script>
+    <!-- <div><button id="my-button-id">test</button><span>10秒钟内点击test按钮以完成测试</span></div>
+    <script src="/变量作用域.js"></script> -->
+  </body>
+
+</html>

@@ -1,0 +1,36 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+# 匹配所有文件
+# [*]
+# Matches multiple files with brace expansion notation
+[*.{vue,js,json,jsonc,mjs,cjs,html}]
+# indent_size的“单位”
+# 设置为space时,按一下Tab键会输入tab_width个空格,而不是输入的真正的制表符
+indent_style = tab
+# 缩进几个tab或几个space
+indent_size = 2
+# tab代表几个space,默认值是indent_size,不必要设置
+# 和indent_size一起覆盖了settings.json中的editor.tabSize设置
+# tab_width = 10
+end_of_line = lf
+charset = utf-8
+# 移除每一行前面的空白?
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+# Tab indentation (no size specified)
+[Makefile]
+indent_style = tab
+
+# Indentation override for all JS under lib directory
+[lib/**.js]
+indent_style = space
+indent_size = 2
+
+# Matches the exact files either package.json or .travis.yml
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2

@@ -1,0 +1,69 @@
+{
+	"plugins": [
+		// "html",//与vue plugin 冲突
+		"vue",
+		"prettier"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:prettier/recommended",
+		"plugin:vue/vue3-recommended"
+	],
+	"rules": {
+		"no-unused-vars": "off",
+		"vue/multi-word-component-names": "off",
+		"vue/html-self-closing": "off",
+		// "indent": [
+		// 	"warn",
+		// 	"tab",
+		// 	// 2,
+		// 	{
+		// 		"outerIIFEBody": 1
+		// 	}
+		// ],
+		"vue/html-indent": [
+			"warn",
+			// 如果是数字,就是缩进几个空格;
+			// 如果是字符串“tab”,就是缩进一个Tab,
+			// 一个Tab长度是几个空格由vscode的settings.json文件中的"editor.tabSize"设置
+			// 2
+			"tab"
+			// // 以下的字段是默认值:
+			// {
+			//   "attribute": 1,
+			//   "baseIndent": 1,
+			//   "closeBracket": 0,
+			//   "alignAttributesVertically": true,
+			//   "ignores": []
+			// }
+		],
+		"prettier/prettier": [
+			"warn",
+			{
+				"endOfLine": "auto",
+				"printWidth": 80,
+				"trailingComma": "es5",
+				"semi": true,
+				"doubleQuote": true,
+				"jsxSingleQuote": true,
+				"singleQuote": false,
+				// NOTE: 与vueIndentScriptAndStyle配合使用
+				// 仅仅打开这一项,报错:“Delete `↹`”
+				"useTabs": true,
+				// NOTE: 与useTabs配合才有效,
+				// 仅打开这一项则报:“Replace `↹` with `··`”
+				"vueIndentScriptAndStyle": true,
+				"tabWidth": 2
+			}
+		],
+		"arrow-body-style": "warn",
+		"prefer-arrow-callback": "warn"
+		// "indent":"off"
+	} //,
+	// "parser": "vue-eslint-parser",
+	// "parserOptions": {
+	// 	"vueFeatures": {
+	// 		"filter": false
+	// 	}
+	// }
+}

@@ -1,0 +1,15 @@
+{
+	"useTabs": true,
+	"tabWidth": 2,
+	"vueIndentScriptAndStyle": true,
+	"overrides": [
+		{
+			"files": "*.json",
+			"options": {
+				"editorconfig": true,
+				"useTabs": true,
+				"tabWidth": 2
+			}
+		}
+	]
+}

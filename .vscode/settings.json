@@ -1,0 +1,29 @@
+{
+	"cmake.configureOnOpen": false,
+	"npm.packageManager": "auto",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"cSpell.words": [
+		"denoland",
+		"gsap",
+		"njsproj",
+		"ntvs"
+	],
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"vue"
+	],
+	"[vue]": {
+		"editor.formatOnPaste": true,
+		"editor.formatOnType": false,
+		"editor.formatOnSave": false,
+		// "editor.formatOnSaveMode": "modifications",
+		// "editor.defaultFormatter": "Vue.volar",
+		// "editor.defaultFormatter": "esbenp.prettier-vscode",
+		// "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+		// "editor.indentSize": "tabSize",
+		// NOTE: 使用eslint格式化时,可以通过工程目录下的.eslintrc文件配置格式化
+		// "editor.detectIndentation": false,
+		// "editor.tabSize": 2
+	}
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习vue基础-无构建</title>
+    <script type="importmap"    >
+        {
+            "imports": {
+                "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="app"></div>
+    <script type="module">
+        import { createApp } from 'vue';
+        // Failed to load module script: Expected a JavaScript 
+        // module script but the server responded with a MIME 
+        // type of "". Strict MIME type checking is enforced 
+        // for module scripts per HTML spec.
+        // import MyComponent from './my-com.vue'
+        import MyComponent from './my-com.js'
+
+        createApp(MyComponent).mount('#app');
+    </script>
+</body>
+</html>
