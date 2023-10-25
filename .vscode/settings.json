@@ -25,5 +25,6 @@
 		// NOTE: 使用eslint格式化时,可以通过工程目录下的.eslintrc文件配置格式化
 		// "editor.detectIndentation": false,
 		// "editor.tabSize": 2
-	}
+	},
+	"GitHooks.hooksDirectory": "/workspaces/learn-vue/.git/hooks"
 }
