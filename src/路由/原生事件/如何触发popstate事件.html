@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<title>popstate事件是怎么触发的,即popstate事件是什么事件</title>
+	<script>
+		window.addEventListener('popstate', (e) => {
+			alert('pop state');
+			console.log(e.state, 'popstate event');
+		})
+	</script>
+</head>
+
+<body>
+	<p><a href='//www.google.com'>Google一下</a></p>
+	<p><button id="btn">push state</button></p>
+	<p><button id="btn-url">push state and url</button></p>
+	<p><button id="btn-r">replace state</button></p>
+	<p><a href='#top'>页面顶部</a></p>
+	<p><button id="btn-r-h">replace state and hash</button></p>
+	<p><button id="forward">🧭前进</button></p>
+	<p><button id="goback">🧭后退</button></p>
+	<p><button id="reload">🧭刷新</button></p>
+	<script>
+		let stateCounter = 0;
+		document.getElementById('btn').addEventListener('click', () => {
+			const url = new URL(location);
+			history.pushState({info: `${++stateCounter}'st state.`}, '', url)
+		});
+		document.getElementById('btn-url').addEventListener('click', () => {
+			history.pushState({info: `${++stateCounter}'st state.`}, '', 'page1.html')
+		});
+		document.getElementById('btn-r').addEventListener('click', () => {
+			const url = new URL(location);
+			history.replaceState({info: `a replaced state.`}, '', url)
+		});
+		document.getElementById('btn-r-h').addEventListener('click', () => {
+			const url = new URL(location);
+			url.hash = 'bottom'
+			history.replaceState({info: `a replaced state and hash.`}, '', url)
+		});
+		document.getElementById('forward').addEventListener('click', () => {
+			history.forward();
+		});
+		document.getElementById('goback').addEventListener('click', () => {
+			history.back();
+		});
+		document.getElementById('reload').addEventListener('click', () => {
+			history.go();
+		});
+	</script>
+</body>
+
+</html>

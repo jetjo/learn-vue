@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<title>PopStateEvent.state与history.state的关系</title>
+	<script>
+		window.addEventListener('load', (e) => {
+			console.log('window load.');
+			if (history.state) return;
+			const url = new URL(location);
+			url.hash = 'hash'
+			history.replaceState({name: `1'st history entry.`}, '', url)
+			history.pushState({name: `2'st history entry`}, '', new URL(url));
+		})
+	</script>
+</head>
+
+<body>
+	<!-- 常规情形, PopStateEvent.state是导航完成后history.state的拷贝 -->
+	<p><button id="forward-btn">前进</button></p>
+	<p><button id="back-btn">后退</button></p>
+	<!-- 特殊情形, ... -->
+	<!-- 并且history.length也没变 -->
+	<p><a href='#hash'>前往HASH锚点</a></p>
+	<script>
+		window.addEventListener('popstate', (e) => {
+			console.log(e.state, 'PopStateEvent.state');
+			console.log(history.state, 'history.state');
+		})
+		document.getElementById('forward-btn').addEventListener('click', () => {
+			history.forward();
+		})
+		document.getElementById('back-btn').addEventListener('click', () => {
+			history.back();
+		})
+	</script>
+</body>
+
+</html>

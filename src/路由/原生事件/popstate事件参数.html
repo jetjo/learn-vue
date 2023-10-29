@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<title>popstate事件参数是什么</title>
+</head>
+
+<body>
+	popstate事件参数的原型是什么,基于基类Event追加了哪些属性和方法?
+	<p><a href='#top'>页面顶部</a></p>
+	<script>
+		window.addEventListener('popstate', (e) => {
+			console.log('popstate事件参数: ', e);
+		})
+	</script>
+</body>
+
+</html>

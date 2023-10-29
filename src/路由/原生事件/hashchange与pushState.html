@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	<title>pushState方法改变hash能否触发hashchange事件</title>
+</head>
+
+<body>
+	<p><button id="btn">push state</button></p>
+	<script>
+		window.addEventListener('hashchange', (e) => {
+			console.log(e);
+		});
+		document.getElementById('btn').addEventListener('click', () => {
+			const url = new URL(location);
+			url.hash = 'top';
+			history.pushState({}, '', url);
+		});
+	</script>
+</body>
+
+</html>
