@@ -69,7 +69,9 @@
 	import TransitionGroupVue from "./CSS动画/搭配内置组件/transition-group/transition-group-basic.vue";
 	import TransitionGroupStaggering from "./CSS动画/搭配内置组件/transition-group/staggering-list-transitions.vue";
 
-	import TeleportVue from "./teleport/index.vue";
+	// import TeleportVue from "./teleport/index.vue";
+
+	import LearnRoute from "./路由/index.vue"
 
 	onMounted(() => {
 		//
@@ -133,7 +135,8 @@
 		<!-- <TransitionModes /> -->
 		<!-- <TransitionGroupVue /> -->
 		<!-- <TransitionGroupStaggering /> -->
-		<TeleportVue />
+		<!-- <TeleportVue /> -->
+		<LearnRoute />
 	</div>
 </template>
 
