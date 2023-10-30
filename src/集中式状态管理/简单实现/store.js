@@ -11,4 +11,5 @@ function increment() {
 // _store.increment = increment.bind(_store);
 
 const store = reactive(_store);
+_store.incrementTest = increment.bind(store);
 export default store;
