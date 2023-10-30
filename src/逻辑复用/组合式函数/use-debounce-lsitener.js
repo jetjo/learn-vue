@@ -8,14 +8,13 @@ import { debounce } from "lodash-es";
  * @param {number} delay
  */
 function useDebounceListener(target, event, handler, delay = 30) {
-  (function (handler) {
-    onMounted(() => {
-      target.addEventListener(event, handler);
-    });
-    onUnmounted(() => {
-      target.removeEventListener(event, handler);
-    });
-  })(delay >= 0 ? debounce(handler, delay) : handler);
+	if (delay >= 0) handler = debounce(handler, delay);
+	onMounted(() => {
+		target.addEventListener(event, handler);
+	});
+	onUnmounted(() => {
+		target.removeEventListener(event, handler);
+	});
 }
 
 export { useDebounceListener };
