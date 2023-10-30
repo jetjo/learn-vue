@@ -36,7 +36,7 @@ import ComBaseSetupProps from "./components/12-组件基础/传递Props/setup.vu
 import ComBaseDefineEmits from "./components/12-组件基础/监听事件/defineEmits.vue";
 import ComBaseSetupEmits from "./components/12-组件基础/监听事件/setup.vue";
 
-import ComBaseSlot from "./components/12-组件基础/通过插槽修改组件内容/index-parent.vue";
+// import ComBaseSlot from "./components/12-组件基础/通过插槽修改组件内容/index-parent.vue";
 
 import ComBaseDynamicCom from "./components/12-组件基础/动态组件/index.vue";
 
@@ -74,6 +74,10 @@ import TransitionGroupStaggering from "./CSS动画/搭配内置组件/transition
 import LearnRoute from "./路由/index.vue"
 
 import LearnStateManage from './集中式状态管理/简单实现/index.vue'
+
+import SlotCaveats from './components/13-插槽语法/插槽注意事项/index.vue'
+
+import SlotNamingParam from './components/13-插槽语法/具名插槽与传参/index.vue'
 
 onMounted(() => {
 	//
@@ -139,7 +143,9 @@ onMounted(() => {
 		<!-- <TransitionGroupStaggering /> -->
 		<!-- <TeleportVue /> -->
 		<!-- <LearnRoute /> -->
-		<LearnStateManage />
+		<!-- <LearnStateManage /> -->
+		<!-- <SlotCaveats /> -->
+		<SlotNamingParam />
 	</div>
 </template>
 
