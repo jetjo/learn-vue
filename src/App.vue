@@ -80,6 +80,8 @@ import SlotCaveats from './components/13-插槽语法/插槽注意事项/index.v
 import SlotNamingParam from './components/13-插槽语法/具名插槽与传参/index.vue'
 import DynamicSlot from './components/13-插槽语法/动态插槽/index.vue'
 
+import LocalRegisterDirective from './components/14-自定义指令/两种注册方式/方式一局部注册.vue'
+
 onMounted(() => {
 	//
 	//
@@ -148,7 +150,8 @@ onMounted(() => {
 		<!-- <LearnStateManage /> -->
 		<!-- <SlotCaveats /> -->
 		<!-- <SlotNamingParam /> -->
-		<DynamicSlot />
+		<!-- <DynamicSlot /> -->
+		<LocalRegisterDirective />
 	</div>
 </template>
 
