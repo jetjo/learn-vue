@@ -45,6 +45,7 @@ import DomTemplateParsingCaveats from "./components/12-组件基础/DOM模版注
 import FancyList from "./插槽应用案例/FancyList/Item1.vue";
 
 import MouseTracker from "./插槽应用案例/无渲染组件/MouseTracker/Item1.vue";
+import MouseTrackerLn from "./逻辑复用/无渲染组件/MouseTracker/Item1.vue"
 
 import InjectDefault from "./依赖注入/默认值/provide-com.vue";
 
@@ -125,6 +126,7 @@ onMounted(() => {
 
 		<!-- <FancyList /> -->
 		<!-- <MouseTracker /> -->
+		<MouseTrackerLn />
 		<!-- <InjectDefault /> -->
 		<!-- <InjectReactive /> -->
 		<!-- <InjectSymbol /> -->
@@ -145,7 +147,7 @@ onMounted(() => {
 		<!-- <LearnRoute /> -->
 		<!-- <LearnStateManage /> -->
 		<!-- <SlotCaveats /> -->
-		<SlotNamingParam />
+		<!-- <SlotNamingParam /> -->
 	</div>
 </template>
 

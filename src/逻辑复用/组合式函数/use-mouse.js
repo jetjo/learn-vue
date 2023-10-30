@@ -1,5 +1,5 @@
 import { reactive } from "vue";
-import { useDebounceListener } from "./use-debounce-lsitener";
+import { useDebounceListener } from "./use-debounce-listener";
 
 /** @param {number}  debounceDelay */
 function useMousePos(debounceDelay = 30) {
