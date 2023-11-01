@@ -5,7 +5,7 @@ export default {
 			return '哈喽!!!'
 		}
 	},
-	toString() {
-		return '什么'
-	}
+	// toString() {
+	// 	return '什么'
+	// }
 }

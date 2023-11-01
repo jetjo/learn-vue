@@ -18,7 +18,7 @@ provide(
   "students",
   // NOTE: 不能像下面这样,这样的话,子组件使用
   // "const { students, addStudent } = inject("students");"
-  // 的语法后,students失去了响应性,并且不是只读的只读的
+  // 的语法后,students失去了响应性,并且不是只读的
   // readonly({
   //   students,
   //   addStudent,
