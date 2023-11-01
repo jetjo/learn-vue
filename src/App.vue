@@ -83,6 +83,7 @@ import DynamicSlot from './components/13-插槽语法/动态插槽/index.vue'
 import LocalRegisterDirective from './components/14-自定义指令/两种注册方式/方式一局部注册.vue'
 import DirectiveParams from './components/14-自定义指令/指令钩子/钩子参数/index.vue'
 import DirectiveHookCallOrder from './components/14-自定义指令/指令钩子/钩子调用时机/更新/index.vue'
+import DirectiveCreateHookCallOrder from './components/14-自定义指令/指令钩子/钩子调用时机/创建与挂载和卸载/index.vue'
 
 onMounted(() => {
 	//
@@ -155,7 +156,8 @@ onMounted(() => {
 		<!-- <DynamicSlot /> -->
 		<!-- <LocalRegisterDirective /> -->
 		<!-- <DirectiveParams /> -->
-		<DirectiveHookCallOrder />
+		<!-- <DirectiveHookCallOrder /> -->
+		<DirectiveCreateHookCallOrder />
 	</div>
 </template>
 
