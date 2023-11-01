@@ -2,6 +2,8 @@
 <template>
 	<div>
 		<Item1 v-d:[foo].bar="state2" :propNoUse="state5" @xxx="state6++" @update="state++" />
+		<!-- <input v-d:[foo].bar="state2" :propNoUse="state5" @xxx="state6++" @update="state++" /> -->
+		<!-- <ylem1 v-d:[foo].bar="state2" :propNoUse="state5" @xxx="state6++" @update="state++">仍然能触发钩子,钩子第一个参数是HTMLUnknownElement类型</ylem1> -->
 		<div>{{ state }}</div>
 		<div><button @click="state++">更新状态</button></div>
 		<!-- <div><button @click="state1++">更新不影响UI的状态</button></div> -->
@@ -25,9 +27,10 @@ const foo = computed(() => 'foo' + state3.value);
 const vD = {
 	beforeUpdate() {
 		console.log('beforeUpdate');
+		// console.log(arguments, 'beforeUpdate');
 	},
 	updated() {
-		console.log('updated');
+		console.log(arguments, 'updated');
 	}
 };
 
