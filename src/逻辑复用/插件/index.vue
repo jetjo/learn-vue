@@ -1,7 +1,12 @@
 <template>
   <div>
     <h3>{{ $translate("greetings.hello") }}</h3>
-    <pre>{{ i18nOpts }}</pre>
+    <!-- <h3>{{ $translate("greetings.fuck") }}</h3> -->
+    <h3>{{ $translate("greetings") }}</h3>
+    <!-- <h3>{{ $translate("") }}</h3>
+    <h3>{{ $translate("fucking") }}</h3>
+    <h3>{{ $translate("fucking.hello") }}</h3> -->
+    <!-- <pre>{{ i18nOpts }}</pre> -->
   </div>
 </template>
 

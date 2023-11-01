@@ -139,7 +139,7 @@ onMounted(() => {
 		<!-- <AsyncComState /> -->
 		<!-- <LearnComposable /> -->
 		<!-- <LearnReactiveComposable /> -->
-		<!-- <LearnPlugin /> -->
+		<LearnPlugin />
 		<!-- <TransitionVue /> -->
 		<!-- <TransitionCustomClass /> -->
 		<!-- <TransitionNested /> -->
@@ -157,7 +157,7 @@ onMounted(() => {
 		<!-- <LocalRegisterDirective /> -->
 		<!-- <DirectiveParams /> -->
 		<!-- <DirectiveHookCallOrder /> -->
-		<DirectiveCreateHookCallOrder />
+		<!-- <DirectiveCreateHookCallOrder /> -->
 	</div>
 </template>
 
