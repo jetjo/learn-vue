@@ -49,7 +49,7 @@ import MouseTrackerLn from "./逻辑复用/无渲染组件/MouseTracker/Item1.vu
 
 import InjectDefault from "./依赖注入/默认值/provide-com.vue";
 
-// import InjectReactive from "./依赖注入/响应式数据/provide-com.vue";
+import InjectReactive from "./依赖注入/响应式数据/provide-com.vue";
 import InjectSymbol from "./依赖注入/Symbol/provide-com.vue";
 
 import AsyncComBasic from "./异步组件/basic-usage.vue";
@@ -59,7 +59,7 @@ import LearnComposable from "./逻辑复用/组合式函数/index.vue";
 
 import LearnReactiveComposable from "./逻辑复用/组合式函数/响应式状态/index.vue";
 
-import LearnPlugin from "./逻辑复用/插件/index.vue";
+import LearnPlugin from "./逻辑复用/插件/Lindex.vue";
 import TransitionVue from "./CSS动画/搭配内置组件/transition/基本用法.vue";
 import TransitionCustomClass from "./CSS动画/搭配内置组件/transition/自定义过渡class.vue";
 import TransitionNested from "./CSS动画/搭配内置组件/transition/nested-transition-duration.vue";
@@ -133,13 +133,13 @@ onMounted(() => {
 		<!-- <MouseTracker /> -->
 		<!-- <MouseTrackerLn /> -->
 		<!-- <InjectDefault /> -->
-		<!-- <InjectReactive /> -->
+		<InjectReactive />
 		<!-- <InjectSymbol /> -->
 		<!-- <AsyncComBasic /> -->
 		<!-- <AsyncComState /> -->
 		<!-- <LearnComposable /> -->
 		<!-- <LearnReactiveComposable /> -->
-		<LearnPlugin />
+		<!-- <LearnPlugin /> -->
 		<!-- <TransitionVue /> -->
 		<!-- <TransitionCustomClass /> -->
 		<!-- <TransitionNested /> -->
@@ -158,6 +158,7 @@ onMounted(() => {
 		<!-- <DirectiveParams /> -->
 		<!-- <DirectiveHookCallOrder /> -->
 		<!-- <DirectiveCreateHookCallOrder /> -->
+
 	</div>
 </template>
 
