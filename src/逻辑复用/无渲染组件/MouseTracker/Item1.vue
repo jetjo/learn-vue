@@ -1,12 +1,1 @@
-<template>
-  <div>
-    <MouseTracker v-slot="{ x, y }">
-      鼠标位置: [{{ x }}, {{ y }}]
-    </MouseTracker>
-  </div>
-</template>
-
-<script setup>
-import MouseTracker from "./index.vue";
-</script>
-
+../../../插槽应用案例/无渲染组件/MouseTracker/Item1.vue

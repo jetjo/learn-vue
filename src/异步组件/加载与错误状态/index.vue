@@ -13,7 +13,6 @@ const AsyncCom = defineAsyncComponent({
     new Promise((_, rej) => {
       setTimeout(() => {
         rej();
-        //   }, 5000);
       }, 15000);
     }),
   delay: 3000, //显示loadingComponent前的延迟,单位ms, 默认值200

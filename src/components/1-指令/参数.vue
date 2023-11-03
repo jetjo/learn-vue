@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import Item1 from '../13-插槽语法/插槽注意事项/Item1.vue'
+import Item1 from '../../內建指令/插槽/插槽语法/插槽注意事项/Item1.vue'
 // 找不到与以下网址对应的网页：http://localhost:5173/www.google.com
 // const url = 'www.google.com'
 const url = 'https://www.google.com'
