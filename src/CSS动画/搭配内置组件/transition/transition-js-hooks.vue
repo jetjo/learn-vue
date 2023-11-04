@@ -24,7 +24,7 @@ function onBeforeEnter(el) {}
 // 在元素被插入到 DOM 之后的下一帧被调用
 // 用这个来开始进入动画
 function onEnter(el, shutdownTransition) {
-  // 调用回调函数 done 表示过渡结束
+  // 调用回调函数 shutdownTransition 表示过渡结束
   // 如果与 CSS 结合使用，则这个回调是可选参数
   // 开始动画、或者设置过渡的终点效果并开始过渡
   //...
@@ -46,7 +46,7 @@ function onBeforeLeave(el) {}
 // 用这个来开始离开动画
 // NOTE: 为防止切换时,后面的元素闪动,必须调用
 function onLeave(el, shutdownTransition_Leave) {
-  // 调用回调函数 done 表示过渡结束
+  // 调用回调函数 shutdownTransition_Leave 表示过渡结束
   // 如果与 CSS 结合使用，则这个回调是可选参数
 
   // 开始动画、或者设置过渡的终点效果并开始过渡
