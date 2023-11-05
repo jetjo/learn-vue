@@ -60,6 +60,8 @@ function remove(item) {
 }
 // 对移动中的元素添加动画
 .fade-move {
+	// fade-enter-active和fade-leave-active类只会被用于删除和插入的元素上,
+	// 而除了插入和删除的元素之外,其他元素也会收到影响,他们会因为列表的各种操作而移动位置
   transition: all 5s cubic-bezier(0.55, 0, 0.1, 1);
 }
 </style>
