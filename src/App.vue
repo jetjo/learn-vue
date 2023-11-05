@@ -69,7 +69,7 @@ import transitionJsHooks from "./CSS动画/搭配内置组件/transition/transit
 import AppearTransition from "./CSS动画/搭配内置组件/transition/appear-transition.vue";
 import TransitionModes from "./CSS动画/搭配内置组件/transition/transition-modes.vue";
 
-import TransitionGroupVue from "./CSS动画/搭配内置组件/transition-group/transition-group-basic.vue";
+import TransitionGroupVue from "./CSS动画/搭配内置组件/transition-group/基本用法-FLIP列表过渡.vue";
 import TransitionGroupStaggering from "./CSS动画/搭配内置组件/transition-group/staggering-list-transitions.vue";
 
 // import TeleportVue from "./teleport/index.vue";
@@ -148,8 +148,8 @@ onMounted(() => {
 		<!-- <transitionJsHooks /> -->
 		<!-- <AppearTransition /> -->
 		<!-- <TransitionModes /> -->
-		<TransitionGroupVue />
-		<!-- <TransitionGroupStaggering /> -->
+		<!-- <TransitionGroupVue /> -->
+		<TransitionGroupStaggering />
 		<!-- <TeleportVue /> -->
 		<!-- <LearnRoute /> -->
 		<!-- <LearnStateManage /> -->
