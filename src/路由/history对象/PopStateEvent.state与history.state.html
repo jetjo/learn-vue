@@ -8,11 +8,24 @@
 	<script>
 		window.addEventListener('load', (e) => {
 			console.log('window load.');
-			if (history.state) return;
-			const url = new URL(location);
-			url.hash = 'hash'
-			history.replaceState({name: `1'st history entry.`}, '', url)
-			history.pushState({name: `2'st history entry`}, '', new URL(url));
+			if (!history.state) {
+				const url = new URL(location);
+				url.hash = 'hash'
+				history.replaceState({name: `1'st history entry.`}, '', url)
+				history.pushState({name: `2'st history entry`}, '', new URL(url));
+				console.log(history.length, 'history.length');
+			}
+			setTimeout(() => {
+				// 特殊,一般情形
+				// 只要是跳转的url与当前的url完全相同,则即使引发popstate事件,
+				// 事件参数的e.state也不等于新页面的history.state
+				const aEle = document.createElement('a', {href: 'window.location.href'}, '前往当前页面');
+				// console.log(aEle);
+				aEle.innerText = '前往当前页面';
+				aEle.setAttribute('href', window.location.href);
+				// console.log(aEle);
+				window.document.body.append(aEle)
+			}, 0);
 		})
 	</script>
 </head>
@@ -35,6 +48,9 @@
 		document.getElementById('back-btn').addEventListener('click', () => {
 			history.back();
 		})
+		window.addEventListener('hashchange', () => {
+			console.log('hashchange!');
+		});
 	</script>
 </body>
 
