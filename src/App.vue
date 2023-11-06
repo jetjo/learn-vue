@@ -149,7 +149,7 @@ onMounted(() => {
 		<!-- <AppearTransition /> -->
 		<!-- <TransitionModes /> -->
 		<!-- <TransitionGroupVue /> -->
-		<TransitionGroupStaggering />
+		<!-- <TransitionGroupStaggering /> -->
 		<!-- <TeleportVue /> -->
 		<!-- <LearnRoute /> -->
 		<!-- <LearnStateManage /> -->
@@ -158,7 +158,7 @@ onMounted(() => {
 		<!-- <DynamicSlot /> -->
 		<!-- <LocalRegisterDirective /> -->
 		<!-- <DirectiveParams /> -->
-		<!-- <DirectiveHookCallOrder /> -->
+		<DirectiveHookCallOrder />
 		<!-- <DirectiveCreateHookCallOrder /> -->
 
 	</div>

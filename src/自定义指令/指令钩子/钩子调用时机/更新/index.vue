@@ -30,6 +30,7 @@ const vD = {
 		// console.log(arguments, 'beforeUpdate');
 	},
 	updated() {
+		// NOTE: 严格模式下,使用arguments关键字会抛出静默的默认不被捕获的异常
 		console.log(arguments, 'updated');
 	}
 };

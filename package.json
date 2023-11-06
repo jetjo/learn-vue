@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "vitest",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -14,6 +15,7 @@
     "emmet": "^2.4.6",
     "gsap": "^3.12.2",
     "lodash-es": "^4.17.21",
+    "punycode": "^2.3.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {
@@ -21,13 +23,16 @@
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
     "@vitejs/plugin-vue": "^4.3.1",
+    "@vue/test-utils": "^2.4.1",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-vue": "^9.17.0",
+    "jsdom": "^22.1.0",
     "prettier": "3.0.3",
     "sass": "^1.66.1",
     "typescript": "^5.2.2",
-    "vite": "^4.4.9"
+    "vite": "^4.4.9",
+    "vitest": "^0.34.6"
   }
 }
