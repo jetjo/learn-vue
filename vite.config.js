@@ -19,6 +19,10 @@ const vitestConfig = {
 			provider: "v8",
 			reporter: ['text', 'json', 'html', 'clover'],
 			reportsDirectory: "./tests/unit/coverage",
+		},
+		snapshotFormat: {
+			// https://vitest.dev/guide/snapshot.html#_2-printbasicprototype-is-default-to-false
+			printBasicPrototype: false
 		}
 	}
 }

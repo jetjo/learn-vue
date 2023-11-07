@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Learn SnapShot > display message snapshot 1`] = `"jetjo"`;
+
+exports[`Learn SnapShot > display message snapshot 2`] = `"<div>jetjo</div>"`;
