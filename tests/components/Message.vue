@@ -1,7 +1,7 @@
 <template>
-	<div>{{ message }}</div>
+	<div>{{ msg }}</div>
 </template>
 
 <script setup>
-defineProps(['message'])
+defineProps(['msg'])
 </script>

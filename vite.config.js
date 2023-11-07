@@ -13,6 +13,12 @@ const vitestConfig = {
 	test: {
 		globals: true,
 		environment: 'jsdom',
+		coverage: {
+			enabled: true,
+			provider: "v8", //'istanbul',
+			reporter: ['text', 'json', 'html', 'clover'],
+			reportsDirectory: "./tests/unit/coverage",
+		}
 	}
 }
 
