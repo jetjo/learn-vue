@@ -13,7 +13,17 @@ const studens = ref([
 	{ name: "liuyifei", age: 17, score: 121 },
 ]);
 
+// 让Istanbul coverage provider 忽略以下if语句
+/* istanbul ignore if */
+// 让v8 coverage provider 忽略以下3行代码
+/* c8 ignore next 3 */
+/* istanbul ignore next */
 function notTested(params) {
+	console.log('未被测试涵盖的方法');
+}
+
+/* istanbul ignore next */
+function notTested1(params) {
 	console.log('未被测试涵盖的方法');
 }
 </script>

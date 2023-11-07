@@ -15,7 +15,8 @@ const vitestConfig = {
 		environment: 'jsdom',
 		coverage: {
 			enabled: true,
-			provider: "v8", //'istanbul',
+			// provider: "istanbul",
+			provider: "v8",
 			reporter: ['text', 'json', 'html', 'clover'],
 			reportsDirectory: "./tests/unit/coverage",
 		}
