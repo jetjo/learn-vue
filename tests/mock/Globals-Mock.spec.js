@@ -7,7 +7,7 @@ const IntersectionObserverMock = vi.fn(() => ({
 	unobserve: vi.fn(),
 }))
 
-// 模拟 jsdom 或 node 运行时中不存在的全局变量。
+// 模拟 jsdom 或 node 运行时中不存在的全局变量和全局API。
 // 把全局变量的值放入 globalThis 对象。
 // https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver
 vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);

@@ -15,7 +15,7 @@ describe("Learn SnapShot", () => {
 		// 这种不同是正常的,可以通过给vitest传递u参数来更新快照
 		expect(wrapper.text()).toMatchSnapshot();
 		expect(wrapper.html()).toMatchSnapshot();
-		// 这种方案可以保持快照对于的语言的语法高亮
+		// 这种方案可以保持快照结果所对应的语言的语法高亮
 		expect(wrapper.html()).toMatchFileSnapshot('./__snapshots__/Message.ss.spec.snap.html');
 	});
 });

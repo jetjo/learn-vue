@@ -61,6 +61,7 @@ describe('reading messages', () => {
 		mock.mockReturnValueOnce('fucking liuyifei');
 		const res = mock();
 		expect(res).toEqual('fucking liuyifei')
-		expect(mock).toHaveNthReturnedWith(3, 'fucking liuyifei')
+		// NOTE: toHaveNthReturnedWith的第一个参数也是从1开始计数
+		expect(mock).toHaveNthReturnedWith(4, 'fucking liuyifei')
 	})
 })
