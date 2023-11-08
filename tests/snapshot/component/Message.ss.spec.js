@@ -19,3 +19,9 @@ describe("Learn SnapShot", () => {
 		expect(wrapper.html()).toMatchFileSnapshot('./__snapshots__/Message.ss.spec.snap.html');
 	});
 });
+
+// it('render basic', async () => {
+// 	// ReferenceError: renderHTML is not defined
+//   const result = renderHTML(h('div', { class: 'foo' }))
+//   await expect(result).toMatchFileSnapshot('./test/basic.output.html')
+// })
