@@ -48,7 +48,7 @@ describe('test module mock', () => {
 
 		// NOTE: get返回的是promise, 为何???
 		const todo = await get();
-		console.log(todo);
+		// console.log(todo);
 		expect(todo.text).toEqual(aTodo.text)
 
 		get.mockImplementation(() => ({ id: 211, text: 'mocked once message', done: false }))

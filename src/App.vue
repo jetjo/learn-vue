@@ -44,6 +44,7 @@ import DomTemplateParsingCaveats from "./components/12-组件基础/DOM模版注
 
 // import FancyList from "./插槽应用案例/FancyList/Item1.vue";
 import FancyList from "./內建指令/插槽/插槽应用案例/FancyList/Item1.vue";
+import PostList from "./插槽应用案例/FancyList/Item2.vue";
 
 // import MouseTracker from "./插槽应用案例/无渲染组件/MouseTracker/Item1.vue";
 import MouseTracker from "./內建指令/插槽/插槽应用案例/无渲染组件/MouseTracker/Item1.vue";
@@ -158,9 +159,10 @@ onMounted(() => {
 		<!-- <DynamicSlot /> -->
 		<!-- <LocalRegisterDirective /> -->
 		<!-- <DirectiveParams /> -->
-		<DirectiveHookCallOrder />
+		<!-- <DirectiveHookCallOrder /> -->
 		<!-- <DirectiveCreateHookCallOrder /> -->
 
+		<PostList />
 	</div>
 </template>
 

@@ -1,16 +1,21 @@
 import { ref, watchEffect, toValue } from "vue";
 
-/** @param { string | Ref<string> } url  */
+/**@typedef { typeof ref } Ref */
+
+/**@param { Ref<string> | string } url */
 export default function useFetch(url) {
 	const data = ref(null);
 	const loading = ref(false);
-	const error = ref(null);
+	/**@type {Ref} */
+	const error = ref(undefined);
 
-	watchEffect(() => {
+	const forceRefresh = () => {
+		// function forceRefresh() {
 		// data.value = null;假如能较快的获取的响应,这样会造成闪烁
 		loading.value = true;
-		error.value = null;
+		error.value = undefined;
 		let hasErr = false;
+		console.warn('url: ', toValue(url));
 		fetch(toValue(url))
 			.then((r) => {
 				if (!r.ok || r.status > 399) throw new Error(r.statusText || r.status);
@@ -26,12 +31,18 @@ export default function useFetch(url) {
 			.finally(() => {
 				if (hasErr) data.value = null;
 				loading.value = false;
+				console.warn('确认响应: ', { error: error.value, data: data.value });
 			});
+	}
+
+	watchEffect(() => {
+		forceRefresh();
 	});
 
 	return {
 		data,
 		loading,
 		error,
+		forceRefresh
 	};
 }

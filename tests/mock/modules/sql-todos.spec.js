@@ -58,7 +58,7 @@ describe('get a list of todo items', () => {
 	})
 
 	it('should throw an error', async () => {
-		const mError = new Error('Unable to retrieve rows')
+		const mError = new Error('__mock__ error: Unable to retrieve rows')
 		client.query.mockRejectedValueOnce(mError)
 
 		await getTodos()

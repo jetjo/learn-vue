@@ -13,6 +13,9 @@ const vitestConfig = {
 	test: {
 		globals: true,
 		environment: 'jsdom',
+		// 会在每个测试文件前都运行
+		setupFiles: ['./vitest.setup.js'],
+		// globalSetup: ['./vitest.setup.js'],
 		coverage: {
 			enabled: true,
 			// provider: "istanbul",
