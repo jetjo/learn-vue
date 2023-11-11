@@ -20,6 +20,8 @@ const vitestConfig = {
 		// outputFile: {
 		// 	html: './test/__vitest__/index.html',
 		// },
+		// 包括inline test code block
+		includeSource: ['src/**/*.{js,ts}'],
 		coverage: {
 			enabled: true,
 			// provider: "istanbul",
@@ -37,6 +39,10 @@ const vitestConfig = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	define: {
+		// 生产环境下有助于打包器清除无效代码
+		'import.meta.vitest': 'undefined',
+	},
 	plugins: [
 		vue(),
 	],
