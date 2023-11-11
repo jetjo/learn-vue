@@ -6,7 +6,8 @@
 // 在.env文件中定义的不起作用
 // 而且必须在终端中执行export baseURL,
 // 否则从终端启动的node进程中,process.env.baseURL是undefined
-const baseURL = typeof process !== 'undefined' ? process.env.baseURL : import.meta.env.VITE_BASE_URL;
+// const baseURL = typeof process !== 'undefined' ? process.env.baseURL : import.meta.env.VITE_BASE_URL;
+const baseURL = import.meta.env.VITE_BASE_URL;
 
 // console.log('process.env: ', process.env);
 // console.log('process.env.baseURL: ', process.env.baseURL);

@@ -17,9 +17,6 @@ vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
 // console.log('window.IntersectionObserver: ', IntersectionObserver);
 
 describe('确认在访问仿真的全局变量前是否需要做些准备,比如beforeAll的调用', () => {
-	beforeAll(() => {
-
-	})
 	it('', () => {
 		expect(window.IntersectionObserver().takeRecords()).toEqual('vi.fn()')
 		// expect(window.IntersectionObserver.takeRecords).toEqual('vi.fn()')

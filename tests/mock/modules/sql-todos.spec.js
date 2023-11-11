@@ -33,6 +33,9 @@ describe('get a list of todo items', () => {
 	})
 
 	afterEach(() => {
+		// NOTE: Will call .mockClear() on all spies.
+		// This will clear mock history,
+		// but not reset its implementation to the default one.
 		vi.clearAllMocks();
 	})
 

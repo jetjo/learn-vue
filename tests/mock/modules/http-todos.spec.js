@@ -13,6 +13,9 @@ vi.mock('axios');
 
 describe('test module mock', () => {
 	afterEach(() => {
+		// NOTE: Will call .mockClear() on all spies.
+		// This will clear mock history,
+		// but not reset its implementation to the default one.
 		vi.clearAllMocks();
 	})
 	it('', async () => {

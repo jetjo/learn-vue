@@ -21,6 +21,8 @@ const { aTodo } = vi.hoisted(() => {
 	}
 })
 
+// 仍然需要直接地模拟...
+vi.mock('axios');
 vi.mock('../../../src/http-get-todos', async (importOriginal) => {
 	// const originalModule = await importOriginal<typeof import('./path/to/module.js')>()
 	const originalModule = await importOriginal()
@@ -35,11 +37,12 @@ vi.mock('../../../src/http-get-todos', async (importOriginal) => {
 		default: 'default export...'
 	}
 })
-// 仍然需要被明确主动直接的模拟...
-vi.mock('axios');
 
 describe('test module mock', () => {
 	afterEach(() => {
+		// NOTE: Will call .mockClear() on all spies.
+		// This will clear mock history,
+		// but not reset its implementation to the default one.
 		vi.clearAllMocks();
 	})
 	it('', async () => {
