@@ -17,10 +17,14 @@ const vitestConfig = {
 		setupFiles: ['./vitest.setup.js'],
 		// globalSetup: ['./vitest.setup.js'],
 		unstubAllEnvs: true,
+		// outputFile: {
+		// 	html: './test/__vitest__/index.html',
+		// },
 		coverage: {
 			enabled: true,
 			// provider: "istanbul",
 			provider: "v8",
+			// default报告器用于在终端中实时查看测试结果
 			reporter: ['text', 'json', 'html', 'clover'],
 			reportsDirectory: "./tests/unit/coverage",
 		},
