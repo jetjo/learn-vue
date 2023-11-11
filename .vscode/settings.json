@@ -10,7 +10,8 @@
 		"liuyifei",
 		"njsproj",
 		"ntvs",
-		"shuchang"
+		"shuchang",
+		"unstub"
 	],
 	"eslint.validate": [
 		"javascript",

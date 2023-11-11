@@ -16,6 +16,7 @@ const vitestConfig = {
 		// 会在每个测试文件前都运行
 		setupFiles: ['./vitest.setup.js'],
 		// globalSetup: ['./vitest.setup.js'],
+		unstubAllEnvs: true,
 		coverage: {
 			enabled: true,
 			// provider: "istanbul",

@@ -12,7 +12,7 @@ const baseURL = import.meta.env.VITE_BASE_URL;
 // console.log('process.env: ', process.env);
 // console.log('process.env.baseURL: ', process.env.baseURL);
 export function getBaseURL(isNdeEnv = true) {
-	if (!baseURL) {
+	if (!baseURL && typeof location === 'undefined') {
 		// global-conf.js:11 ReferenceError: process is not defined
 		// if (!process.env.baseURL) {
 		throw new Error("baseURL is not configured");
