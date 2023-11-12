@@ -1,5 +1,6 @@
 import { beforeAll, afterEach, afterAll } from 'vitest'
 import { nodeServer } from "./api/mocks/";
+import './tests/断言扩展/index'
 
 beforeAll(() => {
 	console.log('global beforeAll...');
