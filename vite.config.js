@@ -4,6 +4,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vuetify from "vite-plugin-vuetify";
 
 // import type { UserConfig as VitestUserConfigInterface } from 'vitest/config'
 
@@ -33,7 +34,10 @@ const vitestConfig = {
 		snapshotFormat: {
 			// https://vitest.dev/guide/snapshot.html#_2-printbasicprototype-is-default-to-false
 			printBasicPrototype: false
-		}
+		},
+		deps: {
+			inline: ['vuetify'],
+		},
 	}
 }
 
@@ -45,6 +49,11 @@ export default defineConfig({
 	},
 	plugins: [
 		vue(),
+		vuetify({
+			// NOTE: 对vitest同样有效,会自动注册被测组件依赖的vuetify组件
+			autoImport: true, // Enabled by default
+			styles: { configFile: 'src/settings.scss' }
+		}),
 	],
 	resolve: {
 		alias: {

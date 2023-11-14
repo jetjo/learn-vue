@@ -8,11 +8,13 @@ import i18nOpts from "./逻辑复用/插件/i18n-opts";
 import i18nPlugin from "./逻辑复用/插件/i18n";
 import globalConfPlugin from "./逻辑复用/插件/global-conf.js";
 import registerDirective, { vGlobalFocus } from "./自定义指令/两种注册方式/方式二全局注册";
+import vuetify from "./plugins/vuetify";
 
 const app = createApp(App);
 app.use(i18nPlugin, i18nOpts);
 app.use(globalConfPlugin);
 registerDirective(app, 'global-focus', vGlobalFocus);
+app.use(vuetify);
 app.mount("#app");
 
 // // 创建多个小的vue应用...

@@ -1,6 +1,8 @@
 import { beforeAll, afterEach, afterAll } from 'vitest'
+import { config as VTUConfig } from "@vue/test-utils";
 import { nodeServer } from "./api/mocks/";
 import './tests/断言扩展/index'
+import vuetify from "./src/plugins/vuetify";
 
 beforeAll(() => {
 	console.log('global beforeAll...');
@@ -15,6 +17,8 @@ beforeAll(() => {
 		// onUnhandledRequest: 'warning'
 		// onUnhandledRequest: 'warn'
 	})
+	VTUConfig.global.plugins.push(vuetify);
+	VTUConfig.global.ResizeObserver = require('resize-observer-polyfill');
 })
 
 afterEach(() => {

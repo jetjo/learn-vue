@@ -22,9 +22,12 @@
     "lodash-es": "^4.17.21",
     "pg": "^8.11.3",
     "punycode": "^2.3.1",
-    "vue": "^3.3.4"
+    "vite-plugin-vuetify": "^1.0.2",
+    "vue": "^3.3.4",
+    "vuetify": "^3.4.0"
   },
   "devDependencies": {
+    "@mdi/js": "^7.3.67",
     "@types/lodash-es": "^4.17.9",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
@@ -40,6 +43,7 @@
     "jsdom": "^22.1.0",
     "msw": "^2.0.5",
     "prettier": "3.0.3",
+    "resize-observer-polyfill": "^1.5.1",
     "sass": "^1.66.1",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
