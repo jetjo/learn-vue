@@ -35,13 +35,13 @@ describe("学习VTU", () => {
 		expect(isFormExists).toBe(!readonly)
 	})
 
+	const form = wrapper.get('[data-test="form"]');
 	it('add new todo', async () => {
 		if (!isFormExists) return;
 		const input = wrapper.get('[data-test="new-todo"]');
 		const newTodo = 'a new todo';
 		// NOTE: 3、模仿用户交互,设置表单元素的值
 		await input.setValue(newTodo);
-		const form = wrapper.get('[data-test="form"]');
 		// NOTE: 4、模仿用户交互,引发事件
 		await form.trigger('submit.prevent');
 
@@ -73,18 +73,26 @@ describe("学习VTU", () => {
 	// 在选项式API中是执行`this.$emit()`
 	// 在组合式API中是先定义`emit方法`(`const emit = defineEmits(['submitted'])`)
 	// 再执行emit(‘eventName’, ...eventArgs)
-	it('检查是否触发了预期的事件', () => {
+	it('检查是否触发了预期的事件', async () => {
 		if (!isFormExists) return;
+
+		const newEventName = 'fucking...'
+		// NOTE: 8、更改属性
+		await wrapper.setProps({ eventName: newEventName })
+
+		await form.trigger('submit.prevent');
 
 		const emitted = wrapper.emitted();
 		console.log({ emitted });
-		expect(emitted).toHaveProperty(eventName)
+
+		expect(emitted).toHaveProperty(newEventName)
 
 		// NOTE: 7、获取组件触发的所有事件
-		const submitEvent = wrapper.emitted(eventName);
+		const submitEvent = wrapper.emitted(newEventName);
 		console.log({ submitEvent });
 
 		expect(submitEvent).toHaveLength(1);
-		expect(submitEvent[0]).toEqual([1, false])
+		// expect(submitEvent[0]).toEqual([1, false])
+		expect(submitEvent[0]).toEqual([2, true])
 	})
 })
