@@ -88,6 +88,8 @@ import DirectiveParams from './自定义指令/指令钩子/钩子参数/index.v
 import DirectiveHookCallOrder from './自定义指令/指令钩子/钩子调用时机/更新/index.vue'
 import DirectiveCreateHookCallOrder from './自定义指令/指令钩子/钩子调用时机/创建与挂载和卸载/index.vue'
 
+import UIVuetify from "./UI/Lib/vuetify.vue";
+
 onMounted(() => {
 	//
 	//
@@ -162,7 +164,8 @@ onMounted(() => {
 		<!-- <DirectiveHookCallOrder /> -->
 		<!-- <DirectiveCreateHookCallOrder /> -->
 
-		<PostList />
+		<!-- <PostList /> -->
+		<UIVuetify />
 	</div>
 </template>
 
