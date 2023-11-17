@@ -16,7 +16,7 @@ const TestHelper = defineComponent({
 	}
 })
 
-const { mockUser } = vi.hoisted(() => ({ id: 1, name: 'liuyifei', age: 18 }))
+const mockUser = vi.hoisted(() => ({ id: 1, name: 'liuyifei', age: 18 }))
 vi.spyOn(axios, 'get').mockResolvedValue({ data: mockUser })
 
 it('fetch user on mount', async () => {

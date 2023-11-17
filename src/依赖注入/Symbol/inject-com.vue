@@ -1,9 +1,9 @@
 <template>
-  <ul>
-    <li v-for="(student, index) in students" :key="index">
-      {{ student.name }} - {{ student.age }}
-    </li>
-  </ul>
+	<ul>
+		<li v-for="(student, index) in students" :key="index" data-test-inject>
+			{{ student.name }} - {{ student.age }}
+		</li>
+	</ul>
 </template>
 
 <script setup>
