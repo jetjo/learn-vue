@@ -26,12 +26,16 @@ function getPost(id) {
 
 // 经测试,确认,不会拦截到${postsPath}/:id
 const _query = http.get(postsPath, ({ request }) => {
-	console.warn('_query 拦截:', request.url);
 	const { searchParams } = new URL(request.url);
 	const ids = searchParams.getAll("id"); //例如: path?id=1&id=2, ids=[1,2]
 	const queryStr = searchParams.get('q');
-	const ps = queryStr ? posts.filter((p) => p.body.includes(queryStr.toLowerCase())) : posts;
-	return HttpResponse.json(ps);
+	const notNilStr = !(queryStr === 'undefined' ||
+		queryStr === 'null' ||
+		queryStr === 'NaN' ||
+		queryStr === '0');
+	console.warn('_query 拦截:', { queryStr, notNilStr });
+	const ps = (queryStr && notNilStr) ? posts.filter((p) => p.body.includes(queryStr.toLowerCase())) : posts;
+	return HttpResponse.json(ps.filter(p => isValidPost(p)));
 })
 
 // 经确认,不能拦截${postsPath}
@@ -50,6 +54,7 @@ const _get = http.get(`${postsPath}/:id`, ({ params, request }) => {
 
 const _post = http.post(postsPath, async ({ request }) => {
 	const post = await request.json();
+	console.warn('_post 拦截: ', post);
 	post.id = posts.length + 1;
 	posts.push(post);
 	return HttpResponse.json(post, { status: 201 });
@@ -60,6 +65,7 @@ const _delete = http.delete(`${postsPath}/:id`, ({ params }) => {
 	// NOTE: error方法用于响应底层网络错误, 不是用来响应业务错误的
 	// if (!Number(id)) return HttpResponse.error("id is not a number");
 	const post = getPost(id);
+	console.warn('_delete 拦截: ', post);
 	if (isValidPost(post)) {
 		post.isDel = true;
 		return HttpResponse.json(post);

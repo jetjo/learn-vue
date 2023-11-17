@@ -2,12 +2,12 @@
 	<!-- <div> -->
 
 	<template v-if="!loading">
-		<div><input type='text' @keydown.enter="handleQuery" :value="q"></div>
+		<div><input data-test type='text' @keydown.enter="handleQuery" :value="q"></div>
 		<FancyList v-if="!error" :posts="posts">
 			<template #item="{ title, name, body, id }">
 				<h2>{{ title || name }}</h2>
 				<p>{{ body }}
-					<button @click="handleDel(id)">删除</button>
+					<button data-test-del @click="handleDel(id)">删除</button>
 				</p>
 			</template>
 		</FancyList>
@@ -44,7 +44,7 @@ function handleDel(id) {
 		method: 'DELETE',
 	}).then(res => res.json()).then(res => {
 		console.log('res: ', res);
-	}).finally(() => forceRefresh())
+	}).finally(() => forceRefresh(true))
 }
 
 const { data: posts, loading, error, forceRefresh } = useFetch(url)
