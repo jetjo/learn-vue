@@ -1,5 +1,3 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`to learn how to expect error throwing > 提示 1`] = `"error"`;
-
 exports[`to learn how to expect error throwing > 用于测试的提示信息, 并不是期待的异常的message 1`] = `"error"`;
