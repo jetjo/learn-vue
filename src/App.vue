@@ -90,6 +90,8 @@ import DirectiveCreateHookCallOrder from './自定义指令/指令钩子/钩子�
 
 import UIVuetify from "./UI/Lib/vuetify.vue";
 
+import PropsStability from '../性能优化/props-stability/index.vue'
+
 onMounted(() => {
 	//
 	//
@@ -165,7 +167,8 @@ onMounted(() => {
 		<!-- <DirectiveCreateHookCallOrder /> -->
 
 		<!-- <PostList /> -->
-		<UIVuetify />
+		<!-- <UIVuetify /> -->
+		<PropsStability />
 	</div>
 </template>
 

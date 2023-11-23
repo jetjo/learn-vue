@@ -15,6 +15,8 @@ app.use(i18nPlugin, i18nOpts);
 app.use(globalConfPlugin);
 registerDirective(app, 'global-focus', vGlobalFocus);
 app.use(vuetify);
+// 在浏览器开发者工具的‘性能/时间线’页面中启用对组件初始化、编译、渲染和修补的性能表现追踪
+app.config.performance = true;
 app.mount("#app");
 
 // // 创建多个小的vue应用...
