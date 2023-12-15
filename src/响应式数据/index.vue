@@ -4,7 +4,7 @@
 			经测试确认:
 				reactive、shallowReactive、readonly、shallowReadonly等
 				不同类型的响应式数据拥有各自独立的reactiveMap;
-				即对同一个api使用同一个参数target调用,返回结果是同一个proxy引用;
+				即对同一个api使用同一个参数target调用多次,返回结果是同一个proxy引用;
 				但是不是同一个api,使用同一个参数target调用,返回的不是同一个proxy引用;
 				这样保持了不同api的语意不变.
 		</pre
