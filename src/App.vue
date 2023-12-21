@@ -93,6 +93,10 @@
 	// import PropsStability from "../性能优化/props-stability/index.vue";
 
 	import ReactiveTest from "./响应式数据/index.vue";
+	import ReactiveTest2 from "./响应式数据/index2.vue";
+	import ReactiveTest2_2 from "./响应式数据/index2-2.vue";
+	import ReactiveTest2_3 from "./响应式数据/index2-3.vue";
+	import ReactiveTest2_4 from "./响应式数据/index2-4.vue";
 
 	onMounted(() => {
 		//
@@ -171,7 +175,11 @@
 		<!-- <PostList /> -->
 		<!-- <UIVuetify /> -->
 		<!-- <PropsStability /> -->
-		<ReactiveTest />
+		<!-- <ReactiveTest /> -->
+		<!-- <ReactiveTest2 /> -->
+		<!-- <ReactiveTest2_2 /> -->
+		<!-- <ReactiveTest2_3 /> -->
+		<ReactiveTest2_4 />
 	</div>
 </template>
 
