@@ -98,6 +98,8 @@
 	import ReactiveTest2_3 from "./响应式数据/index2-3.vue";
 	import ReactiveTest2_4 from "./响应式数据/index2-4.vue";
 
+	import WatchTest from "./响应式api/watch/index.vue";
+
 	onMounted(() => {
 		//
 		//
@@ -179,7 +181,9 @@
 		<!-- <ReactiveTest2 /> -->
 		<!-- <ReactiveTest2_2 /> -->
 		<!-- <ReactiveTest2_3 /> -->
-		<ReactiveTest2_4 />
+		<!-- <ReactiveTest2_4 /> -->
+
+		<WatchTest />
 	</div>
 </template>
 
