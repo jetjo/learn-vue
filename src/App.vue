@@ -100,6 +100,7 @@
 	import ReactiveArrayWithTest from "./响应式数据/array/with.vue";
 	import ReactiveArrayPushTest0 from "./响应式数据/array/push0.vue";
 	import ReactiveArrayPushTest from "./响应式数据/array/push.vue";
+	import ReactiveArraySwapTest from "./响应式数据/array/swap.vue";
 
 	import WatchTest from "./响应式api/watch/index.vue";
 
@@ -189,7 +190,8 @@
 		<!-- <WatchTest /> -->
 		<!-- <ReactiveArrayWithTest /> -->
 		<!-- <ReactiveArrayPushTest /> -->
-		<ReactiveArrayPushTest0 />
+		<!-- <ReactiveArrayPushTest0 /> -->
+		<ReactiveArraySwapTest />
 	</div>
 </template>
 
