@@ -97,6 +97,9 @@
 	import ReactiveTest2_2 from "./响应式数据/index2-2.vue";
 	import ReactiveTest2_3 from "./响应式数据/index2-3.vue";
 	import ReactiveTest2_4 from "./响应式数据/index2-4.vue";
+	import ReactiveArrayWithTest from "./响应式数据/array/with.vue";
+	import ReactiveArrayPushTest0 from "./响应式数据/array/push0.vue";
+	import ReactiveArrayPushTest from "./响应式数据/array/push.vue";
 
 	import WatchTest from "./响应式api/watch/index.vue";
 
@@ -183,7 +186,10 @@
 		<!-- <ReactiveTest2_3 /> -->
 		<!-- <ReactiveTest2_4 /> -->
 
-		<WatchTest />
+		<!-- <WatchTest /> -->
+		<!-- <ReactiveArrayWithTest /> -->
+		<!-- <ReactiveArrayPushTest /> -->
+		<ReactiveArrayPushTest0 />
 	</div>
 </template>
 
