@@ -101,6 +101,7 @@
 	import ReactiveArrayPushTest0 from "./响应式数据/array/push0.vue";
 	import ReactiveArrayPushTest from "./响应式数据/array/push.vue";
 	import ReactiveArrayPushTest3 from "./响应式数据/array/push3.vue";
+	import ReactiveArrayPushTest4 from "./响应式数据/array/push4.vue";
 	import ReactiveArraySwapTest from "./响应式数据/array/swap.vue";
 	import ReactiveArrayCopyWithinTest from "./响应式数据/array/copyWithin.vue";
 	import ReactiveArrayCopyWithinTest1 from "./响应式数据/array/copyWithin/index.vue";
@@ -198,8 +199,9 @@
 		<!-- <ReactiveArraySwapTest /> -->
 		<!-- <ReactiveArrayCopyWithinTest /> -->
 		<!-- <ReactiveArrayCopyWithinTest1 /> -->
-		<ReactiveArrayCopyWithinTest2 />
+		<!-- <ReactiveArrayCopyWithinTest2 /> -->
 		<!-- <ReactiveArrayPushTest3 /> -->
+		<ReactiveArrayPushTest4 />
 	</div>
 </template>
 
