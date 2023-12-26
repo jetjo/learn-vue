@@ -106,6 +106,7 @@
 	import ReactiveArrayCopyWithinTest from "./响应式数据/array/copyWithin.vue";
 	import ReactiveArrayCopyWithinTest1 from "./响应式数据/array/copyWithin/index.vue";
 	import ReactiveArrayCopyWithinTest2 from "./响应式数据/array/copyWithin/index2.vue";
+	import ReactiveArrayCopyWithinTest3 from "./响应式数据/array/copyWithin/index3.vue";
 
 	import WatchTest from "./响应式api/watch/index.vue";
 
@@ -201,7 +202,8 @@
 		<!-- <ReactiveArrayCopyWithinTest1 /> -->
 		<!-- <ReactiveArrayCopyWithinTest2 /> -->
 		<!-- <ReactiveArrayPushTest3 /> -->
-		<ReactiveArrayPushTest4 />
+		<!-- <ReactiveArrayPushTest4 /> -->
+		<ReactiveArrayCopyWithinTest3 />
 	</div>
 </template>
 

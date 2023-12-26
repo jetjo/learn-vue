@@ -3,9 +3,9 @@
 </template>
 
 <script setup>
-	// import { reactive, watchEffect as effect } from "vue";
-	import { reactive, effect, disableLog } from "../../../../index.js";
-	disableLog();
+	import { reactive, watchEffect as effect } from "vue";
+	// import { reactive, effect, disableLog } from "../../../../index.js";
+	// disableLog('none');
 
 	const raw = ["foo", "bar"];
 	const state = reactive(raw);
