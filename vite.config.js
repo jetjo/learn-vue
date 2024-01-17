@@ -6,9 +6,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vuetify from "vite-plugin-vuetify";
 
-// import type { UserConfig as VitestUserConfigInterface } from 'vitest/config'
-
-/** @type{UserConfig} */
+/** @type {import('vitest').UserWorkspaceConfig} */
 const vitestConfig = {
 	// const vitestConfig: VitestUserConfigInterface = {
 	test: {
@@ -58,6 +56,7 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			'@': fileURLToPath(new URL('./src', import.meta.url)),
+			'@book': fileURLToPath(new URL('../vuejs-core-3-book/二、响应系统', import.meta.url)),
 			'vue': 'vue/dist/vue.esm-bundler.js'
 		}
 	},
