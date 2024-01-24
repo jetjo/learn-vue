@@ -93,11 +93,25 @@
 	// import PropsStability from "../性能优化/props-stability/index.vue";
 
 	import ReactiveTest from "./响应式数据/index.vue";
+	// import ReactiveTest1 from "./响应式数据/tmp/1.spec.vue";
+	import ReactiveTest_2 from "./响应式数据/tmp/2.spec.vue";
+	import ReactiveHasTrapTest from "./响应式数据/in.vue";
+	import ReactiveSetHasTest from "./响应式数据/Set/has.vue";
+	import ReactiveSetTest1 from "./响应式数据/Set/1.vue";
 	import ReactiveTest2 from "./响应式数据/index2.vue";
 	import ReactiveTest2_2 from "./响应式数据/index2-2.vue";
 	import ReactiveTest2_3 from "./响应式数据/index2-3.vue";
 	import ReactiveTest2_4 from "./响应式数据/index2-4.vue";
 	import ReactiveArrayWithTest from "./响应式数据/array/with.vue";
+	// import ReactiveArrayIncludesTest from "./响应式数据/array/includes.vue";
+	import ReactiveArrayIncludesTest1 from "./响应式数据/array/test/1/includes.1.vue";
+	import ReactiveArrayIncludesTest2 from "./响应式数据/array/test/1/includes.2.vue";
+	import ReactiveArrayIncludesTest3 from "./响应式数据/array/test/1/includes.3.vue";
+	import ReactiveArrayPushTest_3 from "./响应式数据/array/test/push/3.vue";
+	import ReactiveThisTest_3 from "./响应式数据/test/this/1.vue";
+	import ReactiveRawDirtyTest_1 from "./响应式数据/test/数据污染/1.vue";
+	import ReactiveRawDirtyTest_2 from "./响应式数据/test/数据污染/2.vue";
+	import ReactiveRawDirtyTest_3 from "./响应式数据/test/数据污染/3.vue";
 	import ReactiveArrayPushTest0 from "./响应式数据/array/push0.vue";
 	import ReactiveArrayPushTest from "./响应式数据/array/push.vue";
 	import ReactiveArrayPushTest3 from "./响应式数据/array/push3.vue";
@@ -106,9 +120,12 @@
 	import ReactiveArrayCopyWithinTest from "./响应式数据/array/copyWithin.vue";
 	import ReactiveArrayCopyWithinTest1 from "./响应式数据/array/copyWithin/index.vue";
 	import ReactiveArrayCopyWithinTest2 from "./响应式数据/array/copyWithin/index2.vue";
-	import ReactiveArrayCopyWithinTest3 from "./响应式数据/array/copyWithin/index3.vue";
+	// import ReactiveArrayCopyWithinTest3 from "./响应式数据/array/copyWithin/index3.vue";
 
 	import WatchTest from "./响应式api/watch/index.vue";
+
+	// import Test5_6Api from '../book/test/5-6-api.vue'
+	// import Test5_7Api from '../book/test/5-7-api.vue'
 
 	onMounted(() => {
 		//
@@ -203,7 +220,23 @@
 		<!-- <ReactiveArrayCopyWithinTest2 /> -->
 		<!-- <ReactiveArrayPushTest3 /> -->
 		<!-- <ReactiveArrayPushTest4 /> -->
-		<ReactiveArrayCopyWithinTest3 />
+		<!-- <ReactiveArrayCopyWithinTest3 /> -->
+		<!-- <ReactiveHasTrapTest /> -->
+		<!-- <ReactiveSetHasTest /> -->
+		<!-- <ReactiveTest1 /> -->
+		<!-- <ReactiveTest_2 /> -->
+		<!-- <Test5_6Api /> -->
+		<!-- <Test5_7Api /> -->
+		<!-- <ReactiveArrayIncludesTest /> -->
+		<!-- <ReactiveArrayIncludesTest1 /> -->
+		<!-- <ReactiveArrayIncludesTest2 /> -->
+		<!-- <ReactiveArrayIncludesTest3 /> -->
+		<!-- <ReactiveArrayPushTest_3 /> -->
+		<!-- <ReactiveThisTest_3 /> -->
+		<!-- <ReactiveRawDirtyTest_1 /> -->
+		<!-- <ReactiveRawDirtyTest_2 /> -->
+		<!-- <ReactiveRawDirtyTest_3 /> -->
+		<ReactiveSetTest1 />
 	</div>
 </template>
 

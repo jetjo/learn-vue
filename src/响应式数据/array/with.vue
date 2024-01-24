@@ -18,16 +18,17 @@ const state = reactive([
 
 let stateWithRes
 let stateWithRes1
+stateWithRes = state.with(2, state.at(2))
+stateWithRes1 = state.with(0, state.at(0))
 watchEffect(
   () => {
-    stateWithRes = state.with(2, state.at(2))
-    stateWithRes1 = state.with(0, state.at(0))
     console.log(
       stateWithRes,
       stateWithRes1,
       stateWithRes.at(-1),
       stateWithRes.at(-1) === stateWithRes1.at(-1),
-      stateWithRes.at(-1) === state.at(-1)
+      stateWithRes.at(-1) === state.at(-1),
+      stateWithRes.at(2) === state.at(2)
     )
   }
 )
@@ -35,7 +36,7 @@ watchEffect(
 setTimeout(() => {
   console.log('更改with返回的浅拷贝:')
   // 上面的副作用按理也算依赖于stateWithRes, 但目前with方法返回的结果没有经过reactive处理, 所以不会触发副作用
-  stateWithRes[stateWithRes.length - 1] = 'liuyifei'
+  // stateWithRes[stateWithRes.length - 1] = 'liuyifei'
 }, 0)
 
 // setTimeout(() => {

@@ -30,7 +30,9 @@
 		shallowReadonly,
 		onMounted,
 	} from "vue";
-	const raw = { name: "liuyifei" };
+	const raw = { name: "liuyifei", do: {
+		task: 'be fuck'
+	} };
 	const reactiveState = reactive(raw);
 	const shallowReactiveState = shallowReactive(raw);
 	const readonlyState = readonly(raw);
@@ -53,18 +55,27 @@
 				readonlyReadonlyState,
 				readonlyShallowReadonlyState,
 			]),
-			readonlyReactiveState,
-			readonlyShallowReactiveState,
+			// readonlyReactiveState,
+			// readonlyShallowReactiveState,
 		});
 		console.log(
-			readonlyReactiveState === reactiveState,
-			readonlyShallowReactiveState === shallowReactiveState,
+			// readonlyReactiveState === reactiveState,
+			// readonlyShallowReactiveState === shallowReactiveState,
 			readonlyReadonlyState === readonlyState,
 			readonlyShallowReadonlyState === shallowReadonlyState,
-			readonlyReactiveState === readonlyState,
-			readonlyShallowReactiveState === shallowReadonlyState,
+			// readonlyReactiveState === readonlyState,
+			// readonlyShallowReactiveState === shallowReadonlyState,
 		);
-		readonlyReactiveState.name = "jetjo";
+
+		// readonlyShallowReadonlyState.name = '刘亦菲';
+		// readonlyShallowReadonlyState.do.task = 'be fuck~~~'
+
+		// console.log(readonlyShallowReadonlyState);
+
+		readonlyShallowReactiveState.name = '刘亦菲';
+		readonlyShallowReactiveState.do.task = 'be fuck!!!'
+
+		console.log(readonlyShallowReactiveState);
 	});
 </script>
 

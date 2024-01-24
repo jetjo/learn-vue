@@ -13,17 +13,17 @@
 </template>
 
 <script setup>
+	// import {
+	// 	reactive,
+	// 	shallowReactive,
+	// 	readonly,
+	// 	shallowReadonly,
+	// } from "../../index";
 	import {
 		reactive,
 		shallowReactive,
 		readonly,
 		shallowReadonly,
-	} from "../../index";
-	import {
-		// reactive,
-		// shallowReactive,
-		// readonly,
-		// shallowReadonly,
 		onMounted,
 	} from "vue";
 	const raw = { name: "liuyifei" };
