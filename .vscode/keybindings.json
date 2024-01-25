@@ -1,0 +1,10 @@
+[
+    {
+        "key": "enter",
+        "command": "type",
+        "args": {
+            "text": "Hello World"
+        },
+        "when": "editorTextFocus"
+    }
+]
