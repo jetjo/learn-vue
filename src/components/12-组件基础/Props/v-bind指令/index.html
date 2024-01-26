@@ -12,7 +12,9 @@
 		<!-- http://127.0.0.1:5173/src/components/1-指令/v-bind/index.html -->
 		<!-- https://vitejs.dev/guide/build.html#multi-page-app -->
 		<script type="module">
-			import { createApp } from "vue";
+			// "vue-esm-browser-dev"是在vite.config.js中配置的别名
+			// import { createApp } from "vue-esm-browser-dev";
+			import { createApp } from "vue-runtime-esm-browser-dev";
 			import App from "./shorthand-verify-helper.vue";
 			createApp(App).mount("#app");
 		</script>

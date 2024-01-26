@@ -11,7 +11,11 @@
 		<!-- http://127.0.0.1:5173/src/components/0-模版语法/模版表达式中的全局变量/index.html -->
 		<!-- https://vitejs.dev/guide/build.html#multi-page-app -->
 		<script type="module">
-			import { createApp } from "vue";
+			// NOTE: 在浏览器开发调试环境下,替换vue为vue-esm-browser-dev,
+			// 解决类似警告:
+			// Feature flag __VUE_PROD_HYDRATION_MISMATCH_DETAILS__ is not explicitly defined. You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.
+			// import { createApp } from "vue";
+			import { createApp } from "vue-esm-browser-dev";
 			import App from "./verify-helper.vue";
 			const app = createApp(App);
 			app.config.globalProperties.$1CustomGlobalVar = ["1CustomGlobalVar"];
