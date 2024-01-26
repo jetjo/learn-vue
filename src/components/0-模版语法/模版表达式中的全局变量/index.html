@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>模版表达式中的全局变量</title>
+	</head>
+	<body>
+		<div id="app"></div>
+		<!--NOTE:  在工程根目录运行vite, 打开浏览器,导航到此页面即可 -->
+		<!-- http://127.0.0.1:5173/src/components/0-模版语法/模版表达式中的全局变量/index.html -->
+		<!-- https://vitejs.dev/guide/build.html#multi-page-app -->
+		<script type="module">
+			import { createApp } from "vue";
+			import App from "./verify-helper.vue";
+			const app = createApp(App);
+			app.config.globalProperties.$1CustomGlobalVar = ["1CustomGlobalVar"];
+			app.mount("#app");
+		</script>
+	</body>
+</html>
