@@ -5,6 +5,7 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vuetify from "vite-plugin-vuetify";
+import { resolve } from "path";
 
 // import type { UserConfig as VitestUserConfigInterface } from 'vitest/config'
 
@@ -41,6 +42,27 @@ const vitestConfig = {
 	},
 };
 
+const buildOption = {
+	rollupOptions: {
+		input: {
+			main: "index.html",
+			page1: resolve(
+				__dirname,
+				"src/components/0-模版语法/模版表达式中的全局变量",
+				"index.html",
+			),
+			// 这里,`page1`和`page2`这些入口名称并没有被用作输出的html文件的名称,
+			// 输出的html文件还是保持原来的名称和与main入口的相对位置没变
+			page2: resolve(
+				__dirname,
+				"src/components/12-组件基础/Props/v-bind指令",
+				"index.html",
+			),
+			// 添加更多入口点
+		},
+	},
+};
+
 // https://vitejs.dev/config/
 export default defineConfig({
 	define: {
@@ -58,10 +80,11 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@": fileURLToPath(new URL("./src", import.meta.url)),
-			vue: "vue/dist/vue.esm-bundler.js",
+			// vue: "#vue",// 不行,必须是个文件
 			"vue-esm-browser-dev": "vue/dist/vue.esm-browser.js",
 			"vue-runtime-esm-browser-dev": "vue/dist/vue.runtime.esm-browser.js",
 		},
 	},
 	...vitestConfig,
+	build: buildOption,
 });
