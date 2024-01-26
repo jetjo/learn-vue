@@ -9,19 +9,19 @@
 </template>
 
 <script setup>
-import { onBeforeUpdate, onUpdated, ref } from 'vue';
-const state = ref(0);
-const state1 = ref(0);
-onBeforeUpdate(() => {
-	console.log('onBeforeUpdate', 'Item1');
-})
-onUpdated(() => {
-	console.log('onUpdated', 'Item1');
-})
-const emits = defineEmits(['update', 'xxx'])
-function handleClick() {
-	state.value++;
-	emits('update');
-	// state.value++;
-}
+	import { onBeforeUpdate, onUpdated, ref } from "#vue";
+	const state = ref(0);
+	const state1 = ref(0);
+	onBeforeUpdate(() => {
+		console.log("onBeforeUpdate", "Item1");
+	});
+	onUpdated(() => {
+		console.log("onUpdated", "Item1");
+	});
+	const emits = defineEmits(["update", "xxx"]);
+	function handleClick() {
+		state.value++;
+		emits("update");
+		// state.value++;
+	}
 </script>

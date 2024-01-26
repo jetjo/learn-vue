@@ -1,12 +1,12 @@
-import { h } from "vue";
+import { h } from "#vue";
 import { describe, it, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import index from "./index.vue";
 import Bar from "./Bar.vue";
 
-describe('学习插槽测试', () => {
-	it('字符串形式', () => {
-		const slotContent = 'plain text'
+describe("学习插槽测试", () => {
+	it("字符串形式", () => {
+		const slotContent = "plain text";
 		const wrapper = mount(index, {
 			// type Slot = VNode | string | { render: Function } | Function | Component
 			// slots?: { [key: string]: Slot } & { default?: Slot }
@@ -17,43 +17,43 @@ describe('学习插槽测试', () => {
 				// default: `<div data-test-slot>${slotContent},{{params.x}}</div>`
 				default: `<template #default="{x, y}">
 				<div data-test-slot>${slotContent},{{x}}</div>
-				</template>`
-			}
-		})
+				</template>`,
+			},
+		});
 		// expect(wrapper.text()).toContain(slotContent)
 		// expect(wrapper.find('div[data-test-slot]').text()).toBe(slotContent)
-		expect(wrapper.find('div[data-test-slot]').text()).toBe(slotContent + ',0')
-	})
-	it('VNode???', () => {
-		const slotContent = 'plain text'
+		expect(wrapper.find("div[data-test-slot]").text()).toBe(slotContent + ",0");
+	});
+	it("VNode???", () => {
+		const slotContent = "plain text";
 		const wrapper = mount(index, {
 			slots: {
-				default: h('div', { 'data-test-slot': '' }, slotContent)
-			}
-		})
-		expect(wrapper.find('div[data-test-slot]').text()).toBe(slotContent)
-	})
-	it('Component???', () => {
-		const slotContent = 'plain text'
+				default: h("div", { "data-test-slot": "" }, slotContent),
+			},
+		});
+		expect(wrapper.find("div[data-test-slot]").text()).toBe(slotContent);
+	});
+	it("Component???", () => {
+		const slotContent = "plain text";
 		const wrapper = mount(index, {
 			slots: {
-				default: Bar
-			}
-		})
-		expect(wrapper.find('div[data-test-slot]').text()).toBe(slotContent)
-	})
-	it('Function???', () => {
-		const slotContent = 'plain text'
+				default: Bar,
+			},
+		});
+		expect(wrapper.find("div[data-test-slot]").text()).toBe(slotContent);
+	});
+	it("Function???", () => {
+		const slotContent = "plain text";
 		let slotParamsAssert;
 		const wrapper = mount(index, {
 			slots: {
 				default: (params) => {
 					slotParamsAssert = params;
 					return slotContent;
-				}
-			}
-		})
+				},
+			},
+		});
 		// expect(wrapper.text()).toBe(slotContent)
-		expect(slotParamsAssert).toStrictEqual({ x: 0, y: 0 })
-	})
-})
+		expect(slotParamsAssert).toStrictEqual({ x: 0, y: 0 });
+	});
+});

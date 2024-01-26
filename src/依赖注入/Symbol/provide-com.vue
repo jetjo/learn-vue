@@ -6,22 +6,22 @@
 </template>
 
 <script setup>
-import { provide, ref } from "vue";
-import { students as key } from "./keys";
-import InjectCom from "./inject-com.vue";
-const students = ref([
-	{
-		name: "shuchang",
-		age: 18,
-	},
-	{
-		name: "liuyifei",
-		age: 19,
-	},
-]);
-provide(key, students);
+	import { provide, ref } from "#vue";
+	import { students as key } from "./keys";
+	import InjectCom from "./inject-com.vue";
+	const students = ref([
+		{
+			name: "shuchang",
+			age: 18,
+		},
+		{
+			name: "liuyifei",
+			age: 19,
+		},
+	]);
+	provide(key, students);
 
-defineExpose({
-	students
-})
+	defineExpose({
+		students,
+	});
 </script>

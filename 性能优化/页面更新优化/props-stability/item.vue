@@ -6,14 +6,14 @@
 </template>
 
 <script setup>
-import { computed, onUpdated, toRefs } from 'vue';
+	import { computed, onUpdated, toRefs } from "#vue";
 
-const props = defineProps(['post', 'activeId', 'isActive'])
-const { post, activeId, isActive } = toRefs(props)
+	const props = defineProps(["post", "activeId", "isActive"]);
+	const { post, activeId, isActive } = toRefs(props);
 
-const activeFlag = computed(() => activeId.value === post.value.id)
+	const activeFlag = computed(() => activeId.value === post.value.id);
 
-onUpdated(() => {
-	console.log('list updated...');
-})
+	onUpdated(() => {
+		console.log("list updated...");
+	});
 </script>

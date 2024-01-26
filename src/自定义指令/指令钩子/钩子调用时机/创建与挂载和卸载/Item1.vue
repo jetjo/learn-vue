@@ -8,8 +8,8 @@
 	<div>Item1</div>
 </template>
 <script setup>
-import { onBeforeMount, onMounted } from 'vue';
+	import { onBeforeMount, onMounted } from "#vue";
 
-onMounted(() => console.log('onMounted Item1'))
-onBeforeMount(() => console.log('onBeforeMount Item1'))
+	onMounted(() => console.log("onMounted Item1"));
+	onBeforeMount(() => console.log("onBeforeMount Item1"));
 </script>

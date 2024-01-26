@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-	import { ref } from "vue";
+	import { ref } from "#vue";
 	import ListItem from "./item.vue";
 	const posts = [
 		{

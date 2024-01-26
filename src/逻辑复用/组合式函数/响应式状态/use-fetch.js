@@ -1,4 +1,4 @@
-import { ref, watchEffect, toValue } from "vue";
+import { ref, watchEffect, toValue } from "#vue";
 
 /**@typedef { typeof ref } Ref */
 
@@ -15,7 +15,7 @@ export default function useFetch(url) {
 		loading.value = true;
 		error.value = undefined;
 		let hasErr = false;
-		console.warn('url: ', toValue(url), isForce);
+		console.warn("url: ", toValue(url), isForce);
 		const controller = new AbortController();
 		const { signal } = controller;
 		// NOTE: 添加signal, 解决在 nodejs-16.14.0 中的报错:
@@ -36,9 +36,13 @@ export default function useFetch(url) {
 			.finally(() => {
 				if (hasErr) data.value = null;
 				loading.value = false;
-				console.warn('确认响应: ', { error: error.value, data: data.value, isForce });
+				console.warn("确认响应: ", {
+					error: error.value,
+					data: data.value,
+					isForce,
+				});
 			});
-	}
+	};
 
 	watchEffect(() => {
 		forceRefresh();
@@ -48,6 +52,6 @@ export default function useFetch(url) {
 		data,
 		loading,
 		error,
-		forceRefresh
+		forceRefresh,
 	};
 }

@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-	import { onMounted, reactive } from "vue";
+	import { onMounted, reactive } from "#vue";
 	const props = defineProps(["title", "content"]); //NOTE: 执行时机: Vue框架预处理阶段
 	const state = reactive({
 		title: props.title,

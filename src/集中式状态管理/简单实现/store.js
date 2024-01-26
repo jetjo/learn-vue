@@ -1,9 +1,9 @@
-import { reactive } from "vue";
+import { reactive } from "#vue";
 
-const _store = ({
+const _store = {
 	count: 0,
-	increment
-})
+	increment,
+};
 function increment() {
 	this.count++;
 }

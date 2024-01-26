@@ -1,20 +1,20 @@
 import { describe, it, expect, vi } from "vitest";
 import { mount, flushPromises } from "@vue/test-utils";
 import AsyncSetup from "./async.setup.vue";
-import { Suspense, defineComponent } from "vue";
+import { Suspense, defineComponent } from "#vue";
 
-describe('测试异步setup SFC', () => {
+describe("测试异步setup SFC", () => {
 	beforeEach(() => {
 		vi.useFakeTimers({
-			loopLimit: 100
+			loopLimit: 100,
 		});
-	})
+	});
 
-	it('', async () => {
+	it("", async () => {
 		const wrapperCom = defineComponent({
 			components: { AsyncSetup },
-			template: `<Suspense><AsyncSetup /></Suspense>`
-		})
+			template: `<Suspense><AsyncSetup /></Suspense>`,
+		});
 		const wrapper = mount(wrapperCom);
 		// NOTE: 在调用了vi.useFakeTimers的情况下,
 		// 如果不调用,测试会一直暂停...
@@ -35,7 +35,7 @@ describe('测试异步setup SFC', () => {
 		// 	return asyncWrapper.text()
 		// })(), 'msg...').resolves.toBe('async message...')
 		const asyncWrapper = wrapper.findComponent(AsyncSetup);
-		expect(asyncWrapper.text()).toBe('async message...');
+		expect(asyncWrapper.text()).toBe("async message...");
 		// expect(wrapper.text()).toContain('async message...');
-	}, 10000)
-}, 10000)
+	}, 10000);
+}, 10000);

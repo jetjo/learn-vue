@@ -1,5 +1,5 @@
 <script setup>
-	import { onMounted } from "vue";
+	import { onMounted } from "#vue";
 	import RawHtml from "./components/0-模版语法/原始html.vue";
 	import booleanAttribute from "./components/0-模版语法/布尔型attribute.vue";
 	// Dynamically Binding Multiple Attributes
