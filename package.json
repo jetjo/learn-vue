@@ -15,14 +15,15 @@
 	"imports": {
 		"#vue": {
 			"browser": {
-				"development": "vue/dist/vue.esm-browser.js",
-				"production": "vue/dist/vue.esm-browser.prod.js"
+				"development": "vue/dist/vue.esm-browser.js?desc=useBy-vite-dev",
+				"production": "vue/dist/vue.esm-browser.prod.js?desc=useBy-vite-prod"
 			},
 			"node": {
-				"development": "vue/dist/vue.esm-bundler.js",
-				"production": "vue/dist/vue.esm-bundler.prod.js"
+				"development": {
+					"import": "vue/dist/vue.esm-bundler.js?desc=useBy-vitest"
+				}
 			},
-			"default": "vue"
+			"default": "fallback-vue"
 		}
 	},
 	"dependencies": {
