@@ -3,7 +3,7 @@
 
 	<template v-if="!loading">
 		<div>
-			<input data-test type="text" @keydown.enter="handleQuery" :value="q" />
+			<input data-test type="text" @keydown="handleQuery" :value="q" />
 		</div>
 		<FancyList v-if="!error" :posts="posts">
 			<template #item="{ title, name, body, id }">
@@ -35,6 +35,12 @@
 		q.value = e.target.value;
 	}
 
+	const props = defineProps({
+		__mock__: {
+			default: () => ({}),
+		},
+	});
+
 	const { __mock__ } = toRefs(props);
 
 	/**@description 发起检索请求的url,包含queryString */
@@ -62,10 +68,4 @@
 	}
 
 	const { data: posts, loading, error, forceRefresh } = useFetch(url);
-
-	const props = defineProps({
-		__mock__: {
-			default: () => ({}),
-		},
-	});
 </script>

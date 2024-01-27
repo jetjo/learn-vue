@@ -8,11 +8,20 @@ import vuetify from "vite-plugin-vuetify";
 import { resolve } from "path";
 
 // import type { UserConfig as VitestUserConfigInterface } from 'vitest/config'
+// vite.config.ts
+// import dns from "node:dns";
+
+// // Enforce "localhost" as hostname instead of "127.0.0.1" - https://vitejs.dev/config/server-options.html#server-host
+// // Skip when running through the the "vitest-explorer" VSCode extension.
+// if (!process.env.RUNNING_VIA_VITEST_EXPLORER) {
+// 	dns.setDefaultResultOrder("verbatim");
+// }
 
 /** @type{UserConfig} */
 const vitestConfig = {
 	// const vitestConfig: VitestUserConfigInterface = {
 	test: {
+		// api: Number(process.argv[process.argv.indexOf("--api") + 1]) || 12345,
 		globals: true,
 		environment: "jsdom",
 		// 会在每个测试文件前都运行

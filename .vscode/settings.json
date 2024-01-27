@@ -32,5 +32,8 @@
 		// "editor.tabSize": 2
 	},
 	"editor.formatOnSave": true,
-	"GitHooks.hooksDirectory": "/workspaces/learn-vue/.git/hooks"
+	"GitHooks.hooksDirectory": "/workspaces/learn-vue/.git/hooks",
+	// "vitest.nodeEnv": {
+	// 	"RUNNING_VIA_VITEST_EXPLORER": true
+	// }
 }
