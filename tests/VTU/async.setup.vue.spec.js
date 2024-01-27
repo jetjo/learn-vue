@@ -10,7 +10,7 @@ describe("测试异步setup SFC", () => {
 		});
 	});
 
-	it("", async () => {
+	it("测试异步setup SFC", async () => {
 		const wrapperCom = defineComponent({
 			components: { AsyncSetup },
 			template: `<Suspense><AsyncSetup /></Suspense>`,

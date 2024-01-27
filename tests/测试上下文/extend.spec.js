@@ -4,6 +4,4 @@ import { vi, describe } from "vitest";
 
 // vi.skip();
 
-describe('学习如何扩展测试上下文', () => {
-	it();
-})
+it("学习如何扩展测试上下文");

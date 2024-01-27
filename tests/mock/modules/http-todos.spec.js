@@ -9,24 +9,25 @@ import { list } from "../../../src/http-get-todos";
 // 模拟的第三方库必须已经安装
 // 被测试的http-get-todos模块依赖于axios,即此测试间接依赖axios
 // 无论http-get-todos是否被模拟, axios都需要直接在此处被mock
-vi.mock('axios');
+vi.mock("axios");
 
-describe('test module mock', () => {
+describe("test module mock", () => {
 	afterEach(() => {
 		// NOTE: Will call .mockClear() on all spies.
 		// This will clear mock history,
 		// but not reset its implementation to the default one.
 		vi.clearAllMocks();
-	})
-	it('', async () => {
+	});
+	it(" mock", async () => {
 		const res = await list();
-		expect(res.data.length).toBe(2)
+		expect(res.data.length).toBe(2);
 
-		axios.get.mockImplementationOnce(() => ([{ id: 1, text: 'mocked once message', done: false }]))
+		axios.get.mockImplementationOnce(() => [
+			{ id: 1, text: "mocked once message", done: false },
+		]);
 		const res2 = await list();
 		// const listMock = vi.fn(list).mockResolvedValueOnce([{ id: 1, text: 'mocked once message', done: false }])
 		// const res2 = await listMock();
-		expect(res2).toEqual([{ id: 1, text: 'mocked once message', done: false }])
-	})
-})
-
+		expect(res2).toEqual([{ id: 1, text: "mocked once message", done: false }]);
+	});
+});

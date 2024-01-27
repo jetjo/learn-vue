@@ -17,15 +17,15 @@ import axios from "axios";
 
 const { aTodo } = vi.hoisted(() => {
 	return {
-		aTodo: { id: 1, text: 'mocked of id 1', done: false }
-	}
-})
+		aTodo: { id: 1, text: "mocked of id 1", done: false },
+	};
+});
 
 // 仍然需要直接地模拟...
-vi.mock('axios');
-vi.mock('../../../src/http-get-todos', async (importOriginal) => {
+vi.mock("axios");
+vi.mock("../../../src/http-get-todos", async (importOriginal) => {
 	// const originalModule = await importOriginal<typeof import('./path/to/module.js')>()
-	const originalModule = await importOriginal()
+	const originalModule = await importOriginal();
 	return {
 		...originalModule,
 		list: vi.fn(originalModule.list),
@@ -34,40 +34,43 @@ vi.mock('../../../src/http-get-todos', async (importOriginal) => {
 		// aTodo的定义需要使用vi.hoisted静态提升
 		get: vi.fn(originalModule.get).mockImplementation(() => aTodo),
 		// get: vi.fn(originalModule.get).mockResolvedValue(aTodo),
-		default: 'default export...'
-	}
-})
+		default: "default export...",
+	};
+});
 
-describe('test module mock', () => {
+describe("test module mock", () => {
 	afterEach(() => {
 		// NOTE: Will call .mockClear() on all spies.
 		// This will clear mock history,
 		// but not reset its implementation to the default one.
 		vi.clearAllMocks();
-	})
-	it('', async () => {
+	});
+	it(" mock", async () => {
 		const res = await list();
-		expect(res.data.length).toBe(2)
+		expect(res.data.length).toBe(2);
 
 		// NOTE: get返回的是promise, 为何???
 		const todo = await get();
 		// console.log(todo);
-		expect(todo.text).toEqual(aTodo.text)
+		expect(todo.text).toEqual(aTodo.text);
 
-		get.mockImplementation(() => ({ id: 211, text: 'mocked once message', done: false }))
+		get.mockImplementation(() => ({
+			id: 211,
+			text: "mocked once message",
+			done: false,
+		}));
 		// get.mockImplementationOnce(() => ({ id: 211, text: 'mocked once message', done: false }))
 		// NOTE: 这里又不是返回Promise了, why
 		const todo2 = get();
-		expect(todo2.id).toBe(211)
-	})
+		expect(todo2.id).toBe(211);
+	});
 
-	it('should throw error', async () => {
-		list.mockImplementationOnce(() => axios.get('/api/not-exist'))
+	it("should throw error", async () => {
+		list.mockImplementationOnce(() => axios.get("/api/not-exist"));
 
 		// const err = await list();
 		let rejFlag;
-		await list().catch(() => rejFlag = true)
-		expect(rejFlag).to.be.true
-	})
-})
-
+		await list().catch(() => (rejFlag = true));
+		expect(rejFlag).to.be.true;
+	});
+});
