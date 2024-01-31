@@ -24,7 +24,8 @@
 				}
 			},
 			"default": "fallback-vue"
-		}
+		},
+		"#utils": "./src/utils/index.js"
 	},
 	"dependencies": {
 		"animate.css": "^4.1.1",
