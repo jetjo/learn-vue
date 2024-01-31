@@ -1,7 +1,14 @@
-import { createApp } from "#vue";
+import { createApp, defineAsyncComponent } from "#vue";
+import { mapValues } from "lodash-es";
 
 function useRouter(map, ele) {
 	let app;
+	map = mapValues(map, (v, k) =>
+		typeof v === "string"
+			? defineAsyncComponent(() => import(v || `#${k}`))
+			: v,
+	);
+	console.log("map:", map);
 	const load = () => {
 		// 获取当前路径的hash
 		const hash = location.hash.slice(1);

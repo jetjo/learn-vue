@@ -3,7 +3,13 @@
 		<input type="text" />
 		<!-- <input ref="inputRef" type="text" @keyup=" onKeyup "> -->
 		<!-- <input ref="inputRef" type="text" @keyup.context-menu=" onKeyup "> -->
-		<input ref="inputRef" type="text" @keyup.f13="onKeyup" />
+		<input
+			id="keyboard-modifiers-vue-input-2"
+			ref="inputRef"
+			type="text"
+			@keyup.f13="onKeyup"
+		/>
+		<input type="text" @keyup.ctrl="onKeyup" />
 	</div>
 </template>
 
@@ -11,6 +17,10 @@
 	import { ref, onMounted } from "#vue";
 	const inputRef = ref(null);
 	onMounted(() => {
+		if (inputRef.value == null)
+			inputRef.value = document.getElementById(
+				"keyboard-modifiers-vue-input-2",
+			);
 		inputRef.value.focus();
 	});
 

@@ -4,6 +4,17 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>事件修饰符书写顺序</title>
+		<script type="importmap">
+			{
+				"imports": {
+					"@components/*.vue": "/src/components/*.vue",
+					"@components/**/*.vue": "/src/components/**/*.vue",
+					"#modifiers": "/src/components/8-事件处理/事件修饰符.vue",
+					"#modifiers-keyboard": "/src/components/8-事件处理/按键修饰符.vue",
+					"#modifiers-keyboard-sys": "/src/components/8-事件处理/系统按键修饰符.vue"
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<div id="app"></div>
@@ -12,12 +23,16 @@
 		<!-- http://127.0.0.1:3000/src/事件/修饰符/书写顺序/index.html -->
 		<!-- https://vitejs.dev/guide/build.html#multi-page-app -->
 		<script type="module">
+			import { defineAsyncComponent } from "#vue";
 			import { useRouter } from "#utils";
 			import App from "./stop-prevent.vue";
 			import SelfPrevent from "./self-prevent.vue";
 			const map = {
 				"": App,
 				"self-prevent": SelfPrevent,
+				modifiers: "",
+				"modifiers-keyboard": "",
+				"modifiers-keyboard-sys": "",
 			};
 
 			useRouter(map, "#app");

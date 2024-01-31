@@ -48,6 +48,9 @@
 		</p>
 
 		<p><a href='#self-prevent'>测试self、prevent的书写顺序</a></p>
+		<p><a href='#modifiers'>通用事件修饰符</a></p>
+		<p><a href='#modifiers-keyboard'>键盘事件修饰符</a></p>
+		<p><a href='#modifiers-keyboard-sys'>键盘事件-系统修饰键修饰符</a></p>
 	</div>
 </template>
 

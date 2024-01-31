@@ -89,6 +89,9 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			"@": fileURLToPath(new URL("./src", import.meta.url)),
+			"@components": fileURLToPath(
+				new URL("./src/components", import.meta.url),
+			),
 			// vue: "#vue",// 不行,必须是个文件
 			"vue-esm-browser-dev": "vue/dist/vue.esm-browser.js",
 			"vue-runtime-esm-browser-dev": "vue/dist/vue.runtime.esm-browser.js",
