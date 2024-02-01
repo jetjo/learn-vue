@@ -114,4 +114,4 @@
 <!-- NOTE: 假如任何style标签内除了空白字符和换行符
 之外没有任何内容(包括注释), 那么渲染出的组件的内部标签上
 不会带有类似data-v-7a7a37b1这样的属性名 -->
-<style lang="secc" scoped></style>
+<style lang="scss" scoped></style>

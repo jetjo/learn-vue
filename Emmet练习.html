@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- http://127.0.0.1:5173/Emmet练习.html -->
+		<p>
+			<h3>快捷键系列(前提: 安装并启用Emmet Keybindings扩展)</h3>
+			<ul>
+				<li>
+					  按住⌘, 先按M, 再按O, 可以选择标签内的内容; <br />
+					不松开⌘, 再重复M + O 的敲击顺序, 可以将选中的范围向外层标签扩展; <br />
+					这称作 Balance (Outward). <br />
+					把O键换成I键,可以将选中范围向内层缩小, 这称作 Balance (Inward).
+				</li>
+				<li>  按住⌘, 先按M, 再按M, 可以在起始标签和闭合标签间跳转光标.</li>
+				<li>  按住⌘, 先按M, 再按=, 可以计算数学表达式的结果.</li>
+				<li>
+					<h4>Select Item</h4>
+					<ul>
+						<li>选择下一个条目: ⌘按住, 按M, 按.</li>
+						<li>选择上一个条目: ⌘按住, 按M, 按,</li>
+						<li>用于测试: <a href='www.google.com'>google</a></li>
+					</ul>
+				</li>
+				<li>Remove Tag: ⌘按住, 按M, 按Backspace</li>
+				<li><a href='https://marketplace.visualstudio.com/items?itemName=agutierrezr.emmet-keybindings'>👉其余参考插件文档.</a></li>
+			</ul>
+		</p>
+		<div>
+			<h3>BEM过滤器</h3>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;BEM中的三个字母分别代表Block、Element、Modifier, <br>
+				Block是一个UI业务较为独立的HTML片段, Block由Element组成, Element不一定是单个元素,只是更小的HTML片段; <br>
+				而Modifier是Block或Element在UI样式表现上的变体. <br>
+			</p>
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;一个Block的css的命名格式如下: <br>
+				block_modifier  <br>
+				其中block由n个单词组成,用-连接,表明业务;
+				modifier一般由一个单词构成,表明样式变体. <br>
+				例如: .search-form、.search-form_large <br>
+			</p>
+
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;一个Element的css的命名格式如下: <br>
+				block__element_modifier、或者 element_modifier  <br>
+				例如: .search-form__input、.input_large <br>
+			</p>
+
+			<p>
+				&nbsp;&nbsp;&nbsp;&nbsp;block和element之间使用双下划线连接, block和modifier之间以及element和modifier之间使用单下划线连接. <br>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;借助Emmet的BEM过滤器, 可以快速生成BEM命名规范的HTML片段. <br> 减少block和element的重复书写;
+				emmet过滤器的使用语法是: 一段Emmet缩写|filter, 例如: div|bem  <br>
+				如果emmet相关的配置中配置了默认会使用bem过滤器,可以不用指明,emmet会自动应用.
+			</p>
+ 			<br>&nbsp;&nbsp;&nbsp;&nbsp;例如下面的片段就可以通过缩写: form.search-form_large>input.-input_light 生成:
+			<pre>
+	&lt;form class='search-form search-form_large'>
+		&lt;input type='text' class='search-form__input search-form__input_light'>
+	&lt;/form>
+			</pre>
+		</div>
+	</body>
+</html>
