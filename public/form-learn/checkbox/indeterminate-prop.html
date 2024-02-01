@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>checkbox的indeterminate属性</title>
+	</head>
+	<body>
+		<!-- http://127.0.0.1:5173/form-learn/checkbox/indeterminate-prop.html -->
+		checkbox的indeterminate属性是什么意思? <br />
+
+		<form action="//127.0.0.1:5173">
+			<fieldset>
+				<legend>Made with who:</legend>
+				<p>
+					<input
+						type="checkbox"
+						autocomplete="off"
+						id="made-all-ckb"
+						name="made-all"
+					/><label for="made-all-ckb">全选</label>
+				</p>
+				<ul>
+					<li>
+						<label
+							><input
+								type="checkbox"
+								autocomplete="off"
+								name="made-who"
+								value="liuyifei"
+							/>刘亦菲</label
+						>
+					</li>
+					<li>
+						<label
+							><input
+								type="checkbox"
+								autocomplete="off"
+								name="made-who"
+								value="shuchang"
+							/>舒畅</label
+						>
+					</li>
+					<li>
+						<label
+							><input
+								type="checkbox"
+								autocomplete="off"
+								name="made-who"
+							/>浦秋</label
+						>
+					</li>
+				</ul>
+				<input type="submit" />
+			</fieldset>
+		</form>
+		<script type="module">
+			const madeAll = document.querySelector("[name='made-all']");
+			const madeAllCheckedAttr = madeAll.getAttribute("checked");
+			const madeWhos = document.querySelectorAll("[name='made-who']");
+
+			if (madeAllCheckedAttr || madeAllCheckedAttr === "") {
+				madeWhos.forEach((madeWho) => {
+					madeWho.setAttribute("checked", madeAllCheckedAttr);
+				});
+			}
+
+			madeAll.addEventListener("click", (e) => {
+				e.preventDefault();
+			});
+
+			for (const madeWho of madeWhos) {
+				madeWho.addEventListener("click", updateDisplay);
+			}
+
+			function updateDisplay() {
+				let madeCount = 0;
+				for (const madeWho of madeWhos) {
+					if (madeWho.checked) {
+						madeCount++;
+					}
+				}
+
+				if (madeCount === 0) {
+					madeAll.checked = false;
+					madeAll.indeterminate = false;
+				} else if (madeCount === madeWhos.length) {
+					madeAll.checked = true;
+					madeAll.indeterminate = false;
+				} else {
+					madeAll.checked = false;
+					madeAll.indeterminate = true;
+				}
+			}
+
+			updateDisplay();
+		</script>
+	</body>
+</html>

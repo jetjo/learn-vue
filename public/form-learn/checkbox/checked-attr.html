@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>学习Checkbox的checked属性</title>
+	</head>
+	<body>
+		<h3>
+			书写checkbox标签时传递的checked attr和元素实例的checked prop(IDL
+			attr)不是一个意思!!!
+			<br />
+			虽然有关联
+		</h3>
+		<!-- http://127.0.0.1:5173/form-learn/checkbox/checked-attr.html -->
+		<fieldset>
+			<legend>Made with who:</legend>
+			<p>
+				<!-- NOTE: 这里传递的checked attr和元素实例的checked prop不是一个意思; -->
+				<label>刘亦菲<input type="checkbox" checked /></label>
+			</p>
+			<p>
+				<label>舒畅<input type="checkbox" /></label>
+			</p>
+		</fieldset>
+		<script type="module">
+			[...document.querySelectorAll('input[type="checkbox"]')].forEach(
+				(checkbox) => {
+					const printCheckbox = (checkbox, initFlag = false) => {
+						!initFlag && console.clear();
+
+						console.dir(checkbox); // 在Chrome Dev Edition中,也可以
+						if (initFlag) {
+							const proto = Object.getPrototypeOf(checkbox);
+							console.log(proto === HTMLInputElement.prototype);
+						}
+
+						const { checked, value } = checkbox;
+						const checked_attr = checkbox.getAttribute("checked");
+						console.log({ checked, checked_attr });
+					};
+					printCheckbox(checkbox, true);
+					checkbox.addEventListener("change", (e) => {
+						// NOTE: 这样写, 在控制台只能打印元素的outHtml文本
+						// console.log(e.target);
+						// console.log(Object(e.target));
+						// console.log([e.target]); //ok
+						// console.log({ checkbox: e.target, __proto__: null }); //ok
+						printCheckbox(e.target);
+					});
+				},
+			);
+		</script>
+	</body>
+</html>

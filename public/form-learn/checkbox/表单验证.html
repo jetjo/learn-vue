@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>checkbox的验证</title>
+	</head>
+	<body>
+		<!-- http://127.0.0.1:5173/form-learn/checkbox/表单验证.html -->
+
+		<form action="//127.0.0.1:5173">
+			<fieldset>
+				<legend>Made with who:</legend>
+				<p>
+					<label
+						><input
+							type="checkbox"
+							name="made-who"
+							value="liuyifei"
+							required
+						/>刘亦菲</label
+					>
+				</p>
+				<p>
+					<label
+						><input
+							type="checkbox"
+							name="made-who"
+							value="shuchang"
+						/>舒畅</label
+					>
+				</p>
+				<p>
+					<label><input type="checkbox" name="made-who" />浦秋</label>
+				</p>
+				<input type="submit" />
+			</fieldset>
+		</form>
+		<script type="module">
+			[...document.querySelectorAll('input[type="checkbox"]')].forEach(
+				(checkbox) => {
+					const printCheckbox = (checkbox, initFlag = false) => {
+						!initFlag && console.clear();
+
+						console.dir(checkbox); // 在Chrome Dev Edition中,也可以
+						if (initFlag) {
+							const proto = Object.getPrototypeOf(checkbox);
+							console.log(proto === HTMLInputElement.prototype);
+						}
+
+						const { required, validityState, value, checked } = checkbox;
+						const required_attr = checkbox.getAttribute("required");
+						console.log({ required, required_attr, validityState, checked });
+					};
+					printCheckbox(checkbox, true);
+					checkbox.addEventListener("change", (e) => {
+						// NOTE: 这样写, 在控制台只能打印元素的outHtml文本
+						// console.log(e.target);
+						// console.log(Object(e.target));
+						// console.log([e.target]); //ok
+						// console.log({ checkbox: e.target, __proto__: null }); //ok
+						printCheckbox(e.target);
+					});
+				},
+			);
+		</script>
+	</body>
+</html>

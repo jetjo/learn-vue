@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>checkbox的name和value属性</title>
+	</head>
+	<body>
+		<!-- http://127.0.0.1:5173/form-learn/checkbox/name&value-attr.html -->
+		name和value attr主要是给服务端用的; value在UI上也不可见; <br />
+		当checkbox被选中时, 会以name=value的形式提交给服务端; <br />
+		当有多个checkbox的name相同时, 并且有多于一个被选中时,
+		会以什么形式提交给服务端? <br />
+		value的默认值是什么?
+
+		<form action="//127.0.0.1:5173">
+			<fieldset>
+				<legend>Made with who:</legend>
+				<p>
+					<label
+						><input
+							type="checkbox"
+							name="made-who"
+							value="liuyifei"
+						/>刘亦菲</label
+					>
+				</p>
+				<p>
+					<label
+						><input
+							type="checkbox"
+							name="made-who"
+							value="shuchang"
+						/>舒畅</label
+					>
+				</p>
+				<p>
+					<label><input type="checkbox" name="made-who" />浦秋</label>
+				</p>
+				<input type="submit" />
+			</fieldset>
+		</form>
+	</body>
+</html>
