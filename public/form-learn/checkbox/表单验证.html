@@ -7,7 +7,11 @@
 	</head>
 	<body>
 		<!-- http://127.0.0.1:5173/form-learn/checkbox/表单验证.html -->
-
+		<p>
+			<a href="http://127.0.0.1:5173/form-learn/checkbox/表单验证.html"
+				>my url</a
+			>
+		</p>
 		<form action="//127.0.0.1:5173">
 			<fieldset>
 				<legend>Made with who:</legend>
@@ -48,9 +52,19 @@
 							console.log(proto === HTMLInputElement.prototype);
 						}
 
-						const { required, validityState, value, checked } = checkbox;
+						// const { required, validityState, value, checked } = checkbox;
+						const {
+							required,
+							// NOTE: 对于checkbox, 只有valueMissing有用;
+							// 当required attr存在于某个checkbox时, 只要这个checkbox没选中, valueMissing就为true;
+							// 当required attr存在于form时, 不管用???
+							validity: { valueMissing },
+							value,
+							checked,
+						} = checkbox;
 						const required_attr = checkbox.getAttribute("required");
-						console.log({ required, required_attr, validityState, checked });
+						// console.log({ required, required_attr, validityState, checked });
+						console.log({ required, required_attr, valueMissing, checked });
 					};
 					printCheckbox(checkbox, true);
 					checkbox.addEventListener("change", (e) => {
