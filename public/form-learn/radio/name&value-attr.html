@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>radio的name和value属性</title>
+		<link rel="stylesheet" href="./custom-input-ui.css" />
+	</head>
+	<body>
+		<form action="//127.0.0.1:5173">
+			<fieldset>
+				<legend>Made with who:</legend>
+				<p>
+					<label
+						><input
+							type="radio"
+							name="made-who"
+							value="liuyifei"
+						/>刘亦菲</label
+					>
+				</p>
+				<p>
+					<label
+						><input type="radio" name="made-who" value="shuchang" />舒畅</label
+					>
+				</p>
+				<p>
+					<label><input type="radio" name="made-who" />浦秋</label>
+				</p>
+				<input type="submit" />
+			</fieldset>
+			<p><input type="hidden" name="message" value="hello" /></p>
+		</form>
+		<script type="module">
+			import { showSubmitContent } from "../submit-content.js";
+			showSubmitContent("form");
+		</script>
+		<footer>
+			<!-- http://127.0.0.1:5173/form-learn/radio/name&value-attr.html -->
+			<p>
+				<a href="http://127.0.0.1:5173/form-learn/radio/name&value-attr.html"
+					>my url</a
+				>
+			</p>
+			name和value attr主要是给服务端用的; value在UI上也不可见; <br />
+			当radio被选中时, 会以name=value的形式提交给服务端; <br />
+			value的默认值是什么?
+		</footer>
+	</body>
+</html>

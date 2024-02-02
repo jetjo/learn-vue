@@ -1,0 +1,18 @@
+.submit-content {
+    /* 展示一个置顶水平居中的消息框 */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    /* 圆角, 阴影效果 */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    /* 白色不透明背景 */
+    background-color: rgba(255, 255, 255, 0.9);
+    /* 上下左右2em的内边矩 */
+    padding: 2em;
+    /* 大一些的行距, 1.2rem字体 */
+    line-height: 1.2;
+    font-size: 1.2rem;
+}
