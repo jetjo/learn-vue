@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>生命周期与watch</title>
+	</head>
+	<body>
+		<div id="app"></div>
+		<!--NOTE:  在工程根目录运行vite, 打开浏览器,导航到此页面即可 -->
+		<!-- http://127.0.0.1:5173/src/components/10-生命周期/watch回调时机/index.html -->
+		<!-- http://127.0.0.1:3000/src/components/10-生命周期/watch回调时机/index.html -->
+		<!-- https://vitejs.dev/guide/build.html#multi-page-app -->
+		<script type="module">
+			// "vue-esm-browser-dev"是在vite.config.js中配置的别名
+			// import { createApp } from "vue-esm-browser-dev";
+			// import { createApp } from "vue-runtime-esm-browser-dev";
+			import { createApp } from "#vue";
+			import App from "./parentCom-test-helper.vue";
+			createApp(App).mount("#app");
+		</script>
+	</body>
+</html>
