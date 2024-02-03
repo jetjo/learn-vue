@@ -7,6 +7,12 @@ import vue from "@vitejs/plugin-vue";
 import vuetify from "vite-plugin-vuetify";
 import { resolve } from "path";
 
+import checker from "vite-plugin-checker";
+
+const checkPlugin = !process.env.VITEST
+	? checker({ typescript: true })
+	: undefined;
+
 // import type { UserConfig as VitestUserConfigInterface } from 'vitest/config'
 // vite.config.ts
 // import dns from "node:dns";
@@ -80,6 +86,7 @@ export default defineConfig({
 	},
 	plugins: [
 		vue(),
+		checkPlugin,
 		vuetify({
 			// NOTE: 对vitest同样有效,会自动注册被测组件依赖的vuetify组件
 			autoImport: true, // Enabled by default

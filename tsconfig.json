@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"allowJs": true,
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		"jsx": "preserve",
+		"jsxImportSource": "vue",
+		"baseUrl": "./",
+		"paths": {
+			"@/*": [
+				"./src/*"
+			],
+			"@components/*": [
+				"./src/components/*"
+			]
+		}
+	},
+	"exclude": [
+		"node_modules",
+		// "./*.cjs"
+	],
+	"extends": "@vue/tsconfig/tsconfig.dom.json"
+}
