@@ -4,6 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>生命周期与watch</title>
+		<script type="importmap">
+			{
+				"imports": {
+					"#utils": "/src/utils/index.js"
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<div id="app"></div>
@@ -11,14 +18,22 @@
 		<!-- http://127.0.0.1:5173/src/components/10-生命周期/watch回调时机/index.html -->
 		<!-- http://127.0.0.1:3000/src/components/10-生命周期/watch回调时机/index.html -->
 		<!-- https://vitejs.dev/guide/build.html#multi-page-app -->
-		<script type="module">
+		<script type="module" lang="ts">
 			// "vue-esm-browser-dev"是在vite.config.js中配置的别名
 			// import { createApp } from "vue-esm-browser-dev";
 			// import { createApp } from "vue-runtime-esm-browser-dev";
-			import { createApp } from "vue";
+			import { createApp, defineAsyncComponent } from "vue";
+			import { injectRouter } from "#utils";
 			import App from "./parentCom-test-helper.vue";
-			createApp(App).mount("#app");
-			console.log(__VITE_DEF_Var1);
+			// createApp(App).mount("#app");
+			// console.log(__VITE_DEF_Var1);
+			const map = {
+				"": App,
+				pre: App,
+				post: App,
+				sync: App,
+			};
+			injectRouter({ createApp, defineAsyncComponent })(map, "#app");
 		</script>
 	</body>
 </html>

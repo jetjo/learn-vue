@@ -1,6 +1,10 @@
 // import { createApp, defineAsyncComponent } from "#vue";
 import { mapValues } from "lodash-es";
 function injectRouter({ createApp, defineAsyncComponent, importUrl }) {
+	/**
+	 * @param {import('./router.c.d.ts').Com_Map} map 路由表
+	 * @param {string|HTMLElement} ele 挂载元素,或者css选择器
+	 */
 	return function useRouter(map, ele) {
 		let app;
 		const getPath = (url) =>
@@ -12,6 +16,7 @@ function injectRouter({ createApp, defineAsyncComponent, importUrl }) {
 		);
 		console.log("map:", map);
 		const load = () => {
+			console.clear();
 			// 获取当前路径的hash
 			const hash = location.hash.slice(1);
 			console.log("hashchange:", hash);

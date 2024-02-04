@@ -7,15 +7,35 @@
 </template>
 
 <script setup lang="ts">
-	import { watchEffect, ref, toRef } from "vue";
+	import {
+		watchEffect,
+		ref,
+		toRef,
+		onMounted,
+		onBeforeMount,
+		onBeforeUpdate,
+		onUpdated,
+	} from "vue";
 	import type { UseMessagePrintRes } from "./helper";
 	import { useMessagePrint } from "./usePrint.js";
+	import { injectRouter } from "#utils";
+	import { toValue } from "#vue";
 
+	// type Flush = "pre" | "post" | "sync" | undefined;
 	const props = defineProps({
 		message: String,
+		flush: String as any,
 	});
-	// prettier-ignore
-	const { message, printMessage, parentMessage, printParentMessage } = useMessagePrint({ref, toRef})(props) // as UseMessagePrintRes;
+
+	const { message, printMessage, parentMessage, printParentMessage } =
+		useMessagePrint({
+			ref,
+			toRef,
+			onMounted,
+			onBeforeMount,
+			onBeforeUpdate,
+			onUpdated,
+		})(props); // as UseMessagePrintRes;
 	defineExpose({ message });
 
 	const emit = defineEmits({
@@ -24,14 +44,16 @@
 		},
 	});
 
-	watchEffect(() => printParentMessage());
+	const flush = toValue(toRef(props, "flush") || "pre");
+	watchEffect(() => printParentMessage(), { flush });
 
 	function updateMessage() {
+		console.clear();
 		message.value = Date.now() + " from child";
 		emit("newMsg", message.value);
 	}
 
-	watchEffect(() => printMessage());
+	watchEffect(() => printMessage(), { flush });
 </script>
 
 <style lang="scss" scoped>

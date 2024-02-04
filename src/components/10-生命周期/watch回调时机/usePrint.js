@@ -4,7 +4,14 @@
 import { getInnerTextAfterColon } from "./helper";
 import { camelCase } from "lodash-es";
 
-function useMessagePrint({ ref, toRef }) {
+function useMessagePrint({
+	ref,
+	toRef,
+	onMounted,
+	onBeforeMount,
+	onBeforeUpdate,
+	onUpdated,
+}) {
 	function genInnerTextDesc(cssSelector) {
 		/**@type {Array<string>} */
 		const attrNames = cssSelector
@@ -28,6 +35,11 @@ function useMessagePrint({ ref, toRef }) {
 		const desc = genInnerTextDesc(eleSelector);
 		console.log(desc + ": ", getInnerTextAfterColon(eleSelector));
 	}
+
+	onBeforeMount(() => console.warn("beforeMount!"));
+	onMounted(() => console.warn("mounted!"));
+	onBeforeUpdate(() => console.warn("beforeUpdate!"));
+	onUpdated(() => console.warn("updated!"));
 
 	/**
 	 * @returns {import('./helper.d.ts').UseMessagePrintRes}
