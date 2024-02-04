@@ -83,6 +83,9 @@ export default defineConfig({
 	define: {
 		// 生产环境下有助于打包器清除无效代码
 		"import.meta.vitest": "undefined",
+		// 取消控制台警告: You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.
+		__VUE_PROD_HYDRATION_MISMATCH_DETAILS__: "false",
+		__VITE_DEF_Var1: '"def_var1"',
 	},
 	plugins: [
 		vue(),

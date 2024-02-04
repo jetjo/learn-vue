@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-	import { watchEffect } from "#vue";
+	import { watchEffect, ref, toRef } from "vue";
 	import type { UseMessagePrintRes } from "./helper";
 	import { useMessagePrint } from "./usePrint.js";
 
@@ -15,7 +15,8 @@
 		message: String,
 	});
 	// prettier-ignore
-	const { message, printMessage, parentMessage, printParentMessage } = useMessagePrint(props) as UseMessagePrintRes;
+	const { message, printMessage, parentMessage, printParentMessage } = useMessagePrint({ref, toRef})(props) // as UseMessagePrintRes;
+	defineExpose({ message });
 
 	const emit = defineEmits({
 		newMsg: (msg) => {
@@ -34,7 +35,22 @@
 </script>
 
 <style lang="scss" scoped>
-	[child] {
-		background: #8b9fd2;
+	:global([child]) {
+		background: #d8e0f2;
+		padding: 1em 2em;
+		border-radius: 0.5em;
+		/* font-weight: bold; */
+		font-size: 1.3rem;
+		letter-spacing: 0.1em;
+	}
+	:global([child] button) {
+		margin-top: 1em;
+		padding: 0.5em 1em;
+		border-radius: 0.5em;
+		background: #f0f0f0;
+		cursor: pointer;
+		&:hover {
+			background: #e0e0e0;
+		}
 	}
 </style>
