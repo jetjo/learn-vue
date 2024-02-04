@@ -1,7 +1,25 @@
 {
 	"compilerOptions": {
+		// https://www.typescriptlang.org/tsconfig#rootDir
+		// https://www.typescriptlang.org/tsconfig#composite
+		"composite": true,
+		"rootDir": ".",
+		"outDir": "./ts-out",
+		"rootDirs": [
+			"./ts-out"
+		],
 		"target": "ESNext",
 		"module": "ESNext",
+		"moduleDetection": "auto",
+		// https://www.typescriptlang.org/docs/handbook/2/modules.html#typescripts-module-resolution-options
+		// https://vitejs.dev/guide/performance.html#reduce-resolve-operations
+		// https://vitejs.dev/guide/migration.html#rollup-4
+		// https://www.typescriptlang.org/docs/handbook/modules/reference.html#packagejson-imports-and-self-name-imports
+		"moduleResolution": "Bundler",
+		"resolvePackageJsonImports": true,
+		"resolvePackageJsonExports": true,
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
 		"allowJs": true,
 		"isolatedModules": true,
 		"verbatimModuleSyntax": true,
@@ -21,5 +39,5 @@
 		"node_modules",
 		// "./*.cjs"
 	],
-	"extends": "@vue/tsconfig/tsconfig.dom.json"
+	"extends": "@vue/tsconfig/tsconfig.dom.json",
 }
