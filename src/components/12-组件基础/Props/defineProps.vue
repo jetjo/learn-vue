@@ -7,7 +7,7 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 	import { onMounted, reactive } from "#vue";
 	onMounted(() => console.log("查看执行次序"));
 	const props = defineProps(["title", "content"]); //NOTE: 执行时机: Vue框架预处理阶段

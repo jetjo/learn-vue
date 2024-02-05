@@ -21,6 +21,8 @@
 	import { injectRouter } from "#utils";
 	import { toValue } from "#vue";
 
+	injectRouter();
+
 	// type Flush = "pre" | "post" | "sync" | undefined;
 	const props = defineProps({
 		message: String,
