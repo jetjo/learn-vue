@@ -15,13 +15,15 @@
 		onBeforeMount,
 		onBeforeUpdate,
 		onUpdated,
+		createApp,
+		defineAsyncComponent,
 	} from "vue";
-	import type { UseMessagePrintRes } from "./helper";
+	// import type { UseMessagePrintRes } from "./helper";
 	import { useMessagePrint } from "./usePrint.js";
 	import { injectRouter } from "#utils";
 	import { toValue } from "#vue";
 
-	injectRouter();
+	injectRouter({ createApp, defineAsyncComponent, importUrl: import.meta.url });
 
 	// type Flush = "pre" | "post" | "sync" | undefined;
 	const props = defineProps({

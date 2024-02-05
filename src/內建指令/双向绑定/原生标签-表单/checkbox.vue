@@ -28,7 +28,7 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 	import { ref, reactive } from "vue";
 
 	const madeWho1 = ref();

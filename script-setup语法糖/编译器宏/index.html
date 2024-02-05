@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>编译器宏</title>
+		<!-- <script type="importmap">
+			{
+				"imports": {
+					"@components/*.vue": "/src/components/*.vue",
+					"@components/**/*.vue": "/src/components/**/*.vue",
+					"#modifiers": "/src/components/8-事件处理/事件修饰符.vue",
+					"#modifiers-keyboard": "/src/components/8-事件处理/按键修饰符.vue",
+					"#modifiers-keyboard-sys": "/src/components/8-事件处理/系统按键修饰符.vue"
+				}
+			}
+		</script> -->
+	</head>
+	<body>
+		<div id="app"></div>
+		<!--NOTE:  在工程根目录运行vite, 打开浏览器,导航到此页面即可 -->
+		<!-- http://127.0.0.1:5173/script-setup语法糖/编译器宏/index.html -->
+		<!-- http://127.0.0.1:3000/script-setup语法糖/编译器宏/index.html -->
+		<!-- https://vitejs.dev/guide/build.html#multi-page-app -->
+		<script type="module">
+			import { createApp, defineAsyncComponent } from "#vue";
+			import { injectRouter } from "#utils";
+			import App from "./parent.vue";
+			const map = {
+				"": App,
+			};
+
+			const appRef = injectRouter({ createApp, defineAsyncComponent })(
+				map,
+				"#app",
+			);
+
+			const handleHashChange = () => {
+				const app = appRef.app;
+				if (!app) return;
+				app.config.globalProperties.Promise = Promise;
+				app.config.globalProperties.Symbol = Symbol;
+			};
+			window.addEventListener("hashchange", handleHashChange);
+			handleHashChange();
+		</script>
+	</body>
+</html>
