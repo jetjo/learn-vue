@@ -1,57 +1,73 @@
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PopStateEvent.state与history.state的关系</title>
+		<script>
+			window.addEventListener("load", (e) => {
+				console.log("window load.");
+				if (!history.state) {
+					const url = new URL(location);
+					url.hash = "hash";
+					history.replaceState({ name: `1'st history entry.` }, "", url);
+					history.pushState({ name: `2'st history entry` }, "", new URL(url));
+					console.log(history.length, "history.length");
+				}
+				setTimeout(() => {
+					// 特殊,一般情形
+					// 只要是跳转的url与当前的url完全相同,则即使引发popstate事件,
+					// 事件参数的e.state也不等于新页面的history.state
+					const aEle = document.createElement(
+						"a",
+						{ href: "window.location.href" },
+						"前往当前页面",
+					);
+					// console.log(aEle);
+					aEle.innerText = "前往当前页面";
+					aEle.setAttribute("href", window.location.href);
+					// console.log(aEle);
+					window.document.body.append(aEle);
+				}, 0);
+			});
+		</script>
+	</head>
 
-<head>
-	<meta charset='UTF-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-	<title>PopStateEvent.state与history.state的关系</title>
-	<script>
-		window.addEventListener('load', (e) => {
-			console.log('window load.');
-			if (!history.state) {
-				const url = new URL(location);
-				url.hash = 'hash'
-				history.replaceState({name: `1'st history entry.`}, '', url)
-				history.pushState({name: `2'st history entry`}, '', new URL(url));
-				console.log(history.length, 'history.length');
-			}
-			setTimeout(() => {
-				// 特殊,一般情形
-				// 只要是跳转的url与当前的url完全相同,则即使引发popstate事件,
-				// 事件参数的e.state也不等于新页面的history.state
-				const aEle = document.createElement('a', {href: 'window.location.href'}, '前往当前页面');
-				// console.log(aEle);
-				aEle.innerText = '前往当前页面';
-				aEle.setAttribute('href', window.location.href);
-				// console.log(aEle);
-				window.document.body.append(aEle)
-			}, 0);
-		})
-	</script>
-</head>
+	<body>
+		<!-- http://127.0.0.1:5173/src/路由/history对象/PopStateEvent.state与history.state.html -->
+		<!-- 常规情形, PopStateEvent.state是导航完成后history.state的拷贝 -->
+		<p><button id="forward-btn">前进</button></p>
+		<p><button id="back-btn">后退</button></p>
+		<!-- 特殊情形, ... -->
+		<!-- 并且history.length也没变 -->
+		<p><a href="#hash">前往HASH锚点</a></p>
+		<p><button id="push-state-btn">pushState</button></p>
+		<p><button id="replace-state-btn">replaceState</button></p>
+		<script>
+			window.addEventListener("popstate", (e) => {
+				console.log(e.state, "PopStateEvent.state");
+				console.log(history.state, "history.state");
+			});
+			document.getElementById("forward-btn").addEventListener("click", () => {
+				history.forward();
+			});
+			document.getElementById("back-btn").addEventListener("click", () => {
+				history.back();
+			});
+			window.addEventListener("hashchange", () => {
+				console.log("hashchange!");
+			});
 
-<body>
-	<!-- 常规情形, PopStateEvent.state是导航完成后history.state的拷贝 -->
-	<p><button id="forward-btn">前进</button></p>
-	<p><button id="back-btn">后退</button></p>
-	<!-- 特殊情形, ... -->
-	<!-- 并且history.length也没变 -->
-	<p><a href='#hash'>前往HASH锚点</a></p>
-	<script>
-		window.addEventListener('popstate', (e) => {
-			console.log(e.state, 'PopStateEvent.state');
-			console.log(history.state, 'history.state');
-		})
-		document.getElementById('forward-btn').addEventListener('click', () => {
-			history.forward();
-		})
-		document.getElementById('back-btn').addEventListener('click', () => {
-			history.back();
-		})
-		window.addEventListener('hashchange', () => {
-			console.log('hashchange!');
-		});
-	</script>
-</body>
-
+			document
+				.getElementById("push-state-btn")
+				.addEventListener("click", () => {
+					history.pushState(null, "", location);
+				});
+			document
+				.getElementById("replace-state-btn")
+				.addEventListener("click", () => {
+					history.replaceState(null, "", location);
+				});
+		</script>
+	</body>
 </html>

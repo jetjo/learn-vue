@@ -1,56 +1,118 @@
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>popstate事件是怎么触发的,即popstate事件是什么事件</title>
+		<script>
+			window.addEventListener("popstate", (e) => {
+				alert("pop state");
+				console.log(e.state, "popstate event");
+			});
+		</script>
+	</head>
 
-<head>
-	<meta charset='UTF-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-	<title>popstate事件是怎么触发的,即popstate事件是什么事件</title>
-	<script>
-		window.addEventListener('popstate', (e) => {
-			alert('pop state');
-			console.log(e.state, 'popstate event');
-		})
-	</script>
-</head>
+	<body>
+		<!-- http://127.0.0.1:5173/src/路由/原生事件/如何触发popstate事件.html -->
+		<p><a href="//www.google.com">Google一下</a></p>
+		<p><button push-state>push state</button></p>
+		<p><button push-state-url>push state with new url</button></p>
+		<p><button replace-state>replace state</button></p>
+		<p><a href="#top">页面顶部</a></p>
+		<p><button replace-state-hash>replace state with new hash</button></p>
+		<p><button forward>🧭前进</button></p>
+		<p><button goback>🧭后退</button></p>
+		<p><button reload>🧭刷新</button></p>
+		<script type="module">
+			import { domUtil } from "#utils";
+			let stateCounter = globalThis.history.length - 1;
+			const typeId = Symbol(
+				"popstate事件是怎么触发的,即popstate事件是什么事件",
+			);
+			domUtil.onBeforeEach(typeId, (e) => {
+				console.clear();
+				console.log(history.length, "history.length");
+				console.log(history.state, "history.state");
+			});
+			domUtil.onAfterEach(typeId, (e) => {
+				console.log(history.length, "history.length");
+				console.log(history.state, "history.state");
+			});
 
-<body>
-	<p><a href='//www.google.com'>Google一下</a></p>
-	<p><button id="btn">push state</button></p>
-	<p><button id="btn-url">push state and url</button></p>
-	<p><button id="btn-r">replace state</button></p>
-	<p><a href='#top'>页面顶部</a></p>
-	<p><button id="btn-r-h">replace state and hash</button></p>
-	<p><button id="forward">🧭前进</button></p>
-	<p><button id="goback">🧭后退</button></p>
-	<p><button id="reload">🧭刷新</button></p>
-	<script>
-		let stateCounter = 0;
-		document.getElementById('btn').addEventListener('click', () => {
-			const url = new URL(location);
-			history.pushState({info: `${++stateCounter}'st state.`}, '', url)
-		});
-		document.getElementById('btn-url').addEventListener('click', () => {
-			history.pushState({info: `${++stateCounter}'st state.`}, '', 'page1.html')
-		});
-		document.getElementById('btn-r').addEventListener('click', () => {
-			const url = new URL(location);
-			history.replaceState({info: `a replaced state.`}, '', url)
-		});
-		document.getElementById('btn-r-h').addEventListener('click', () => {
-			const url = new URL(location);
-			url.hash = 'bottom'
-			history.replaceState({info: `a replaced state and hash.`}, '', url)
-		});
-		document.getElementById('forward').addEventListener('click', () => {
-			history.forward();
-		});
-		document.getElementById('goback').addEventListener('click', () => {
-			history.back();
-		});
-		document.getElementById('reload').addEventListener('click', () => {
-			history.go();
-		});
-	</script>
-</body>
+			domUtil.on(
+				"[push-state]",
+				"click",
+				() => {
+					const url = new URL(location);
+					history.pushState({ info: `${++stateCounter}'st state.` }, "", url);
+				},
+				typeId,
+			);
 
+			domUtil.on(
+				"[push-state-url]",
+				"click",
+				() => {
+					history.pushState(
+						{ info: `${++stateCounter}'st state with new url.` },
+						"",
+						"page1.html",
+					);
+				},
+				typeId,
+			);
+
+			domUtil.on(
+				"[replace-state]",
+				"click",
+				() => {
+					const url = new URL(location);
+					history.replaceState({ info: `a replaced state.` }, "", url);
+				},
+				typeId,
+			);
+
+			domUtil.on(
+				"[replace-state-hash]",
+				"click",
+				() => {
+					const url = new URL(location);
+					url.hash = "bottom";
+					history.replaceState(
+						{ info: `a replaced state with new hash.` },
+						"",
+						url,
+					);
+				},
+				typeId,
+			);
+
+			domUtil.on(
+				"[forward]",
+				"click",
+				() => {
+					history.forward();
+				},
+				typeId,
+			);
+
+			domUtil.on(
+				"[goback]",
+				"click",
+				() => {
+					history.back();
+				},
+				typeId,
+			);
+
+			domUtil.on(
+				"[reload]",
+				"click",
+				() => {
+					history.go();
+				},
+				typeId,
+			);
+		</script>
+	</body>
 </html>

@@ -1,37 +1,40 @@
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>页面导航处理流程</title>
+		<script>
+			window.addEventListener("DOMContentLoaded", (e) => {
+				// alert("DOMContentLoaded");
+				console.log(document.readyState, "DOMContentLoaded event readyState");
+			});
+			window.addEventListener("load", (e) => {
+				// alert("load");
+				console.log(document.readyState, "load event readyState");
+			});
+			window.addEventListener("pageshow", (e) => {
+				// alert("page show");
+				console.log(document.readyState, "page show event readyState");
+				console.log(location.hash, "page show event hash");
+			});
+			window.addEventListener("popstate", (e) => {
+				// alert("pop state");
+				console.log(e.state, "popstate event state");
+				console.log(location.hash, "popstate event hash");
+			});
+			window.addEventListener("hashchange", (e) => {
+				// alert("hash change");
+				// e.preventDefault(); 无效
+				console.log(e, "hashchange event");
+			});
+		</script>
+	</head>
 
-<head>
-	<meta charset='UTF-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-	<title>页面导航处理流程</title>
-	<script>
-		window.addEventListener('DOMContentLoaded', (e) => {
-			alert('DOMContentLoaded');
-			console.log(document.readyState, 'DOMContentLoaded event readyState');
-		})
-		window.addEventListener('load', (e) => {
-			alert('load');
-			console.log(document.readyState, 'load event readyState');
-		})
-		window.addEventListener('pageshow', (e) => {
-			alert('page show');
-			console.log(document.readyState, 'page show event readyState');
-			console.log(location.hash, 'page show event hash');
-		})
-		window.addEventListener('popstate', (e) => {
-			alert('pop state');
-			console.log(e.state, 'popstate event state');
-			console.log(location.hash, 'popstate event hash');
-		})
-		window.addEventListener('hashchange', (e) => {
-			alert('hash change');
-		})
-	</script>
-</head>
-
-<body>
-	<p><a href='#top'>页面顶部</a></p>
-</body>
-
+	<body>
+		<!-- http://127.0.0.1:5173/src/路由/原生事件/页面导航处理流程.html -->
+		<!-- 点击几次就触发几次popstate event, 但是history.length不会变;
+		而hashchange只有hash变化时才可能触发 -->
+		<p><a href="#top">页面顶部</a></p>
+	</body>
 </html>
