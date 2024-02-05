@@ -1,0 +1,244 @@
+/// <reference types="vitest" />
+
+import { defineConfig, loadEnv } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import WindiCSS from 'vite-plugin-windicss';
+import { resolve } from 'path';
+import fs from 'fs';
+import { htmlPlugin } from './vite-plugins/html-plugin';
+import * as pkg from './package.json';
+import vueI18n from '@intlify/vite-plugin-vue-i18n';
+// import vueJsx from '@vitejs/plugin-vue-jsx';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import Components from 'unplugin-vue-components/vite';
+// import analyze from 'rollup-plugin-analyzer';
+import { visualizer } from 'rollup-plugin-visualizer';
+import AutoImport from 'unplugin-auto-import/vite';
+import checker from 'vite-plugin-checker';
+import axios from 'axios';
+// import tsconfigPaths from 'vite-tsconfig-paths';
+
+const serverPort = 3005;
+
+const code = `<script type="module" src="https://localhost:${serverPort}/src/index.ts"></script>`;
+fs.writeFile('../Bloc.no/Views/_dist/frontend-vue.vm', code, () => {
+    console.log('The file was saved!');
+});
+
+export default async ({ command }) => {
+    
+    // // build, preview or dev
+    // const task = process.env.npm_lifecycle_event; 
+    // // make api call here
+    // axios.get('http://www.google.com');
+    let base = '/';
+    if(process.env.npm_lifecycle_event === 'build') 
+        base = `https://blocdistcdn.azureedge.net/vue/${pkg.version}/`;
+    if(process.env.npm_lifecycle_event === 'preview')
+        base = `/vue-dist/${pkg.version}/`;
+
+    return defineConfig({
+        base: base,
+        define: {
+            '__APP_VERSION__': JSON.stringify(pkg.version),
+            'Site': 'Site'
+        },
+        esbuild: {
+            jsxFactory: 'h',
+            jsxFragment: 'Fragment'
+        },
+        optimizeDeps: {
+            include: [
+                '@vueuse/core',
+                '@vue-leaflet/vue-leaflet',
+                '@headlessui/vue',
+                '@vee-validate/rules',
+                '@googlemaps/markerclustererplus', 
+                'vue3-date-time-picker', 
+                '@vueup/vue-quill',
+                'vue-accessible-color-picker',
+                'webfontloader',
+                '@googlemaps/js-api-loader', 
+                'vue-router',
+                'vue-i18n',
+                'axios',
+                'leaflet',
+                'proj4leaflet',
+                'date-fns/locale',
+                'vue3-youtube',
+                'vue-slider-component',
+                'vue-content-loader', 
+                'bane',
+                'swiper/vue', 
+                'swiper',
+                'axe-core',
+            ],
+        },
+        resolve: {
+            alias: [
+                {
+                    find: '@',
+                    replacement: resolve(__dirname, 'src'),
+                },
+                {
+                    find: 'types',
+                    replacement: resolve(__dirname, 'types'),
+                },
+            ],
+        },
+        /**
+         * server config object breaks cypress component tests. 
+         */
+        server: {
+            port: serverPort,
+            strictPort: true,
+            
+            https: {
+                key: fs.readFileSync('certs/localhost-key.pem'),
+                cert: fs.readFileSync('certs/localhost.pem'),
+            },
+            hmr: {
+                host: 'localhost',
+                port: 3005,
+                protocol: 'wss'
+            },
+        },
+        build: {
+            target: command === 'serve' ? 'esnext' : 'es2015',
+            minify: command === 'serve' ? false : 'terser',
+            sourcemap: command === 'serve',
+            emptyOutDir: true,
+            rollupOptions: {
+                input: {
+                    'index': resolve(__dirname, 'index.html'),
+                },
+                output: {
+                    dir: `dist/${pkg.version}`,
+                    entryFileNames: '[name].js',
+                    chunkFileNames: '[name].js',
+                    assetFileNames: '[name].[ext]',
+                },
+                plugins: [
+                    // analyze({
+                    //     summaryOnly: true,
+                    // })
+                    visualizer()
+                ]
+            },
+        },
+        plugins: [
+            vue(),
+            Icons({
+                scale: 1,
+                defaultStyle: 'position:relative; top: .125em;',
+                compiler: 'vue3',
+                // defaultClass: 'align-middle',
+                autoInstall: true
+            }),
+            // https://github.com/antfu/unplugin-vue-components#configuration
+            Components({
+                dts: true,
+                extensions: ['vue'],
+                dirs: [
+                    'src/components',
+                    'src/components/Widgets',
+                    'src/pages/Orienteering/components',
+                    'src/pages/Account/Components'
+                ],
+                deep: true,
+                resolvers:[ 
+                    IconsResolver({
+                        componentPrefix: 'icon'
+                    })
+                ],
+                exclude: [
+                    'src/components/Widgets'
+                ],
+
+            }),
+            AutoImport({
+                imports: [
+                    'vue',
+                    'vue-router',
+                    'vee-validate',
+                    'vue-i18n',
+                    '@vueuse/core',
+                    'pinia',
+                    {
+                        '@vee-validate/i18n': [
+                            'localize', 
+                            'loadLocaleFromURL',
+                            'setLocale'
+                        ],
+                        '@vee-validate/rules': [
+                            'alpha', 
+                            'alpha_dash', 
+                            'alpha_num', 
+                            'alpha_spaces', 
+                            'between', 
+                            'confirmed', 
+                            'digits', 
+                            'dimensions', 
+                            'email', 
+                            'ext', 
+                            'image', 
+                            'integer', 
+                            'is', 
+                            'is_not', 
+                            'length', 
+                            'max', 
+                            'max_value', 
+                            'mimes', 
+                            'min', 
+                            'min_value', 
+                            'not_one_of', 
+                            'numeric', 
+                            'one_of', 
+                            'regex', 
+                            'required', 
+                            'size', 
+                            'url'
+                        ]
+                    }
+                ]
+            }),
+            // vueJsx(),
+            WindiCSS(),
+            vueI18n({
+                runtimeOnly: false,
+                include: [
+                    'src/locales/**',
+                ]
+            }),
+            // tsconfigPaths(),
+            checker({
+                enableBuild: true, 
+                // vue-tsc only works in build mode for now. set enableBuild to true to enable.
+                vueTsc: true,
+                // not working with @ aliases
+                typescript: false,
+                eslint: {
+                    lintCommand: 'eslint --format=pretty . --ext .js,.ts,.vue',
+
+                },
+            }),
+            htmlPlugin(command),
+        ],
+        test: {
+            globals: true,
+            // isolate: false,
+            include: ['**/*.test.ts'],
+            environment: 'happy-dom',
+            coverage: {
+                include: [
+                    'src/**/*.{vue,ts}'
+                ],
+                exclude: [
+                    '**/services/bloc-webapi',
+                    '**/test.ts'
+                ]
+            }
+        },
+    });
+};

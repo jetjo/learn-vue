@@ -8,26 +8,17 @@
 		"rootDirs": [
 			// NOTE: 在package.json中的`imports`字段中为`"./src/utils/index.js"`设置了别名`#utils`,
 			// 所以如果不把本文件设置的`compilerOptions.outDir`作为`rootDirs`的一部分,则无法正确的解析`#utils`别名的类型
-			// "./ts-out"
+			"./ts-out"
 		],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleDetection": "auto",
-		// https://www.typescriptlang.org/docs/handbook/2/modules.html#typescripts-module-resolution-options
-		// https://vitejs.dev/guide/performance.html#reduce-resolve-operations
-		// https://vitejs.dev/guide/migration.html#rollup-4
-		// https://www.typescriptlang.org/docs/handbook/modules/reference.html#packagejson-imports-and-self-name-imports
-		"moduleResolution": "Bundler",
 		"resolvePackageJsonImports": true,
 		"resolvePackageJsonExports": true,
-		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"allowJs": true,
-		"strict": true,
 		"checkJs": false,
-		"isolatedModules": true,
 		"verbatimModuleSyntax": true,
-		"jsx": "preserve",
 		"jsxImportSource": "vue",
 		// // 仅用于AMD, 从TS 4.1开始
 		// "baseUrl": "./",
@@ -47,9 +38,108 @@
 		},
 		// sourceMap的baseUrl
 		// "sourceRoot": "//www.xxx.com/",
+		"useDefineForClassFields": true,
+		"lib": [
+			"ES2020",
+			"DOM",
+			"DOM.Iterable"
+		],
+		"skipLibCheck": true,
+		/* Bundler mode */
+		// https://www.typescriptlang.org/docs/handbook/2/modules.html#typescripts-module-resolution-options
+		// https://vitejs.dev/guide/performance.html#reduce-resolve-operations
+		// https://vitejs.dev/guide/migration.html#rollup-4
+		// https://www.typescriptlang.org/docs/handbook/modules/reference.html#packagejson-imports-and-self-name-imports
+		// "moduleResolution": "Bundler",
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"jsx": "preserve",
+		/* Linting */
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"noFallthroughCasesInSwitch": true
 	},
 	"exclude": [
-		"node_modules"
+		"**/node_modules/**",
+		"**/dist/**",
+	],
+	"include": [
+		// "./**/*",
+		"./**/*.ts",
+		"./**/*.tsx",
+		"./**/*.d.ts",
+		"./**/*.js",
+		"./**/*.jsx",
+		"./**/*.vue",
+		"./**/*.json",
+		"./**/*.wasm",
+		"./**/*.mjs",
+		"./**/*.mts",
+		"./**/*.cjs",
+		"./**/*.css",
+		"./**/*.less",
+		"./**/*.sass",
+		"./**/*.scss",
+		"./**/*.styl",
+		"./**/*.svg",
+		"./**/*.png",
+		"./**/*.jpg",
+		"./**/*.jpeg",
+		"./**/*.gif",
+		"./**/*.webp",
+		"./**/*.bmp",
+		"./**/*.tiff",
+		"./**/*.ico",
+		"./**/*.avif",
+		"./**/*.mp3",
+		"./**/*.mp4",
+		"./**/*.webm",
+		"./**/*.ogg",
+		"./**/*.ogv",
+		"./**/*.oga",
+		"./**/*.ogx",
+		"./**/*.wav",
+		"./**/*.flac",
+		"./**/*.aac",
+		"./**/*.m4a",
+		"./**/*.opus",
+		"./**/*.flv",
+		"./**/*.mov",
+		"./**/*.wmv",
+		"./**/*.avi",
+		"./**/*.rm",
+		"./**/*.rmvb",
+		"./**/*.mkv",
+		"./**/*.asf",
+		"./**/*.mpg",
+		"./**/*.mpeg",
+		"./**/*.mpe",
+		"./**/*.tsv",
+		"./**/*.csv",
+		// "./**/*.xls",
+		// "./**/*.xlsx",
+		// "./**/*.xlsm",
+		// "./**/*.xltx",
+		// "./**/*.xltm",
+		// "./**/*.xlsb",
+		// "./**/*.xlam",
+		// "./**/*.xll",
+		// "./**/*.xlw",
+		// "./**/*.doc",
+		// "./**/*.docx",
+		// "./**/*.docm",
+		// "./**/*.dotx",
+		// "./**/*.dotm",
+		// "./**/*.ppt",
 	],
 	"extends": "@vue/tsconfig/tsconfig.dom.json",
+	"references": [
+		{
+			"path": "./tsconfig.node.json"
+		}
+	]
 }

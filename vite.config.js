@@ -10,7 +10,12 @@ import { resolve } from "path";
 import checker from "vite-plugin-checker";
 
 const checkPlugin = !process.env.VITEST
-	? checker({ typescript: true })
+	? checker({
+			// typescript checker不支持vue项目, 当在js/ts文件中导入vue文件时 报错:
+			// [TypeScript] Cannot find module './*.vue' or its corresponding type declarations.
+			// typescript: true,
+			vueTsc: true,
+	  })
 	: undefined;
 
 // import type { UserConfig as VitestUserConfigInterface } from 'vitest/config'
@@ -80,7 +85,11 @@ const buildOption = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	appType: "mpa", // 默认是spa, mpa是有多个html文件入口
+	envPrefix: "VITE_", // 默认, 设置为空字符是危险的,可能泄露敏感数据
 	define: {
+		// If you would like to expose an unprefixed variable, you can use define to expose it:
+		"import.meta.env.ENV_VARIABLE": JSON.stringify(process.env.ENV_VARIABLE),
 		// 生产环境下有助于打包器清除无效代码
 		"import.meta.vitest": "undefined",
 		// 取消控制台警告: You are running the esm-bundler build of Vue, which expects these compile-time feature flags to be globally injected via the bundler config in order to get better tree-shaking in the production bundle.
@@ -106,6 +115,10 @@ export default defineConfig({
 			"vue-esm-browser-dev": "vue/dist/vue.esm-browser.js",
 			"vue-runtime-esm-browser-dev": "vue/dist/vue.runtime.esm-browser.js",
 		},
+		// Enabling this setting causes vite to determine file identity by the original file path (i.e. the path without following symlinks) instead of the real file path (i.e. the path after following symlinks).
+		// preserveSymlinks: false,// 默认是:false
+		// extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json'], //导入时可以省略的扩展名,默认
+		// mainFields: ['browser', 'module', 'jsnext:main', 'jsnext'], // 默认, 当没有从package.json的`exports`字段中找的模块时,会使用这个字段的值
 	},
 	...vitestConfig,
 	build: buildOption,

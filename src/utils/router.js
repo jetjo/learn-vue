@@ -2,7 +2,7 @@
 import { mapValues } from "lodash-es";
 function injectRouter({ createApp, defineAsyncComponent, importUrl }) {
 	/**
-	 * @param {import('./router.c.d.ts').Com_Map} map 路由表
+	 * @param {import('./router-c.d.ts').Com_Map} map 路由表
 	 * @param {string|HTMLElement} ele 挂载元素,或者css选择器
 	 */
 	return function useRouter(map, ele) {
@@ -31,6 +31,11 @@ function injectRouter({ createApp, defineAsyncComponent, importUrl }) {
 			load();
 		});
 		load();
+		return {
+			get app() {
+				return app;
+			},
+		};
 	};
 }
 export { injectRouter };
