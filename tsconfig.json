@@ -6,7 +6,9 @@
 		"rootDir": ".",
 		"outDir": "./ts-out",
 		"rootDirs": [
-			"./ts-out"
+			// NOTE: 在package.json中的`imports`字段中为`"./src/utils/index.js"`设置了别名`#utils`,
+			// 所以如果不把本文件设置的`compilerOptions.outDir`作为`rootDirs`的一部分,则无法正确的解析`#utils`别名的类型
+			// "./ts-out"
 		],
 		"target": "ESNext",
 		"module": "ESNext",
@@ -21,23 +23,33 @@
 		"resolveJsonModule": true,
 		"esModuleInterop": true,
 		"allowJs": true,
+		"strict": true,
+		"checkJs": false,
 		"isolatedModules": true,
 		"verbatimModuleSyntax": true,
 		"jsx": "preserve",
 		"jsxImportSource": "vue",
-		"baseUrl": "./",
+		// // 仅用于AMD, 从TS 4.1开始
+		// "baseUrl": "./",
+		// 用于裸模块的类型导入路径的re-map, 权限最高
 		"paths": {
+			// NOTE: 这里使用单个*,就代表所有层级的子目录,不用使用**/*
 			"@/*": [
-				"./src/*"
+				// 这里的相对路径基于此配置文件的位置
+				"./src/*",
+				// fallback, 如果第一个路径找不到, 就会使用第二个路径
+				"./"
 			],
 			"@components/*": [
-				"./src/components/*"
+				"./src/components/*",
+				"./components/*"
 			]
-		}
+		},
+		// sourceMap的baseUrl
+		// "sourceRoot": "//www.xxx.com/",
 	},
 	"exclude": [
-		"node_modules",
-		// "./*.cjs"
+		"node_modules"
 	],
 	"extends": "@vue/tsconfig/tsconfig.dom.json",
 }

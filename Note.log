@@ -1,0 +1,3 @@
+1、*.d.ts文件中的*不能是index, 不能再包含.
+例如vue.c.d.ts文件,里面声明的东西就不能被ts server识别,
+改为vue-c.d.ts才可以被识别
