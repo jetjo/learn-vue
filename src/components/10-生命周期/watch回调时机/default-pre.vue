@@ -1,27 +1,21 @@
 <template>
 	<div child>
 		<p message>message: {{ message }}</p>
-		<p><button @click="updateMessage">更新消息</button></p>
+		<p>
+			<button @click="updateMessage">更新消息,并分发事件,以便父组件获悉</button>
+		</p>
 		<p parent-message>parentMessage: {{ parentMessage }}</p>
 	</div>
 </template>
 
 <script setup lang="ts">
-	import {
-		watchEffect,
-		ref,
-		toRef,
-		onMounted,
-		onBeforeMount,
-		onBeforeUpdate,
-		onUpdated,
-		createApp,
-		defineAsyncComponent,
-	} from "vue";
+	import * as Vue from "vue";
 	// import type { UseMessagePrintRes } from "./helper";
 	import { useMessagePrint } from "./usePrint.js";
 	import { injectRouter } from "#utils";
 	import { toValue } from "#vue";
+
+	const { watchEffect, toRef, createApp, defineAsyncComponent } = Vue;
 
 	injectRouter({ createApp, defineAsyncComponent, importUrl: import.meta.url });
 
@@ -31,15 +25,11 @@
 		flush: String as any,
 	});
 
-	const { message, printMessage, parentMessage, printParentMessage } =
-		useMessagePrint({
-			ref,
-			toRef,
-			onMounted,
-			onBeforeMount,
-			onBeforeUpdate,
-			onUpdated,
-		})(props); // as UseMessagePrintRes;
+	// 查看 useMessagePrint 注释
+	const messageRes = useMessagePrint(Vue)(props); // as UseMessagePrintRes;
+
+	// prettier-ignore
+	const { message, printMessage, parentMessage, printParentMessage } = messageRes;
 	defineExpose({ message });
 
 	const emit = defineEmits({
@@ -49,6 +39,8 @@
 	});
 
 	const flush = toValue(toRef(props, "flush") || "pre");
+
+	// 父组件传来的消息更新后会执行
 	watchEffect(() => printParentMessage(), { flush });
 
 	function updateMessage() {
@@ -57,6 +49,7 @@
 		emit("newMsg", message.value);
 	}
 
+	// 子组件自身的message状态变化后会执行
 	watchEffect(() => printMessage(), { flush });
 </script>
 

@@ -4,36 +4,35 @@
 import { getInnerTextAfterColon } from "./helper";
 import { camelCase } from "lodash-es";
 
-function useMessagePrint({
-	ref,
-	toRef,
-	onMounted,
-	onBeforeMount,
-	onBeforeUpdate,
-	onUpdated,
-}) {
-	function genInnerTextDesc(cssSelector) {
-		/**@type {Array<string>} */
-		const attrNames = cssSelector
-			.split(" ")
-			.map((s) => s.replace(/[\[\]]/g, ""));
-		if (attrNames.length !== 2) return cssSelector;
-		if (attrNames.some((s) => s.includes("="))) return cssSelector;
+/**
+ * @description 1、注册`beforeMount`,`mounted`, `beforeUpdate`, `updated`四个生命周期钩子,
+ * 									在这些钩子中打印生命周期名称
+ * @description 2、返回一个`useMessagePrint Vue Compose`函数, 该函数接收一个`props`参数,
+ * 									返回一个`useMessagePrintRes`对象
+ * 									@description 2.1、`props`参数是使用该`useMessagePrint`函数的组件的props,
+ * 																		该组件必须有`message`属性, 用于接收父组件传递的消息
+ * 									@description 2.2、`useMessagePrintRes`返回对象有四个属性:
+ * 																		@description 2.2.1、`message`: 为使用该`Compose`的组件定义的响应式状态
+ * 																		@description 2.2.2、`printMessage`: 方法, 打印`[child] [message]`和`[parent] [child-message]`两个css选择器选中的节点的InnerText, 以及`message`的值
+ * 																		@description 2.2.3、`parentMessage`: 响应式状态,对应`props.message`
+ * 																		@description 2.2.3、`printParentMessage`: 方法, 打印`[parent] [message]`和`[child] [parent-message]`两个css选择器选中的节点的InnerText, 以及`parentMessage`的值
+ */
+function useMessagePrint(Vue) {
+	// prettier-ignore
+	const { ref, toRef, onMounted, onBeforeMount, onBeforeUpdate, onUpdated } = Vue;
 
-		const attr0 = attrNames[0];
-		const who =
-			attr0 === "child"
-				? "组件UI"
-				: attr0 === "parent"
-				? "父组件UI"
-				: camelCase(attr0);
-
-		return `${who}'s current ${camelCase(attrNames[1])}`;
-	}
-
+	const descriptionMaps = {
+		"[parent] [message]": "父组件UI的当前消息: ",
+		"[child] [parent-message]": "子组件UI的当前父消息: ",
+		"[child] [message]": "子组件UI的当前消息: ",
+		"[parent] [child-message]": "父组件UI的当前子消息: ",
+	};
+	/**@description 打印css选择器选中的第一个节点的InnerText */
 	function printInnerTextAfterColon(eleSelector) {
-		const desc = genInnerTextDesc(eleSelector);
-		console.log(desc + ": ", getInnerTextAfterColon(eleSelector));
+		console.log(
+			String(descriptionMaps[eleSelector]),
+			getInnerTextAfterColon(eleSelector),
+		);
 	}
 
 	onBeforeMount(() => console.warn("beforeMount!"));

@@ -14,7 +14,10 @@ const checkPlugin = !process.env.VITEST
 			// typescript checker不支持vue项目, 当在js/ts文件中导入vue文件时 报错:
 			// [TypeScript] Cannot find module './*.vue' or its corresponding type declarations.
 			// typescript: true,
-			vueTsc: true,
+			vueTsc: {
+				// root: process.cwd(),// 默认与vite保持一致
+				// tsconfig: "tsconfig.json",// 默认
+			},
 	  })
 	: undefined;
 
